@@ -1,34 +1,73 @@
-@import "normalize.css";
+@import 'normalize.css';
 
-@import "./scss/fonts.scss";
-@import "./scss/reset.scss";
+@import './scss/fonts.scss';
+@import './scss/reset.scss';
 
-@import "./scss/theme/colors.scss";
-@import "./scss/theme/typography.scss";
-@import "./scss/theme/breakpoints.scss";
+@import './scss/theme/colors.scss';
+@import './scss/theme/typography.scss';
+@import './scss/theme/breakpoints.scss';
 
 html {
-  line-height: $mainLineHeight;
-  font-size: $mainFontSize;
-  color: $mainFontColor;
-  height: 100%;
-  @media screen and (max-width: $desktopWidth) {
-    font-size: 16px;
-  }
-  @media screen and (max-width: $tableWidth) {
-    font-size: 15px;
-  }
-  @media screen and (max-width: $phoneWidth) {
-    font-size: 14px;
-  }
+	line-height: $mainLineHeight;
+	font-size: $mainFontSize;
+	color: $mainFontColor;
+	height: 100%;
+	@media screen and (max-width: $desktopWidth) {
+		font-size: 16px;
+	}
+	@media screen and (max-width: $tableWidth) {
+		font-size: 15px;
+	}
+	@media screen and (max-width: $phoneWidth) {
+		font-size: 14px;
+	}
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: $mainFont;
-  font-size: $mainFontSize;
-  font-weight: $mainFontWeight;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	font-family: $mainFont;
+	font-size: $mainFontSize;
+	font-weight: $mainFontWeight;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+	max-width: 1280px;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+@keyframes for-overlay {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+		top: -100%;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+		top: 0;
+	}
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	background: rgba(2, 2, 2, 0.85);
+	z-index: 100;
+	opacity: 0;
+	visibility: hidden;
+
+	&.overlay-on {
+		animation: for-overlay 0.5s ease 0s;
+		opacity: 1;
+		visibility: visible;
+	}
 }
