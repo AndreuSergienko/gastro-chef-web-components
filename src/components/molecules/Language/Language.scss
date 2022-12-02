@@ -23,17 +23,9 @@
 
 .header {
 	gastro-language {
-		@media (max-width: 700px) {
-			display: none;
-		}
-	}
-	&__lang {
 		position: absolute;
 		bottom: 20%;
 		left: 25%;
-		display: flex;
-		align-items: center;
-		gap: 15px;
 		@media (max-width: 1200px) {
 			bottom: 15%;
 		}
@@ -44,6 +36,14 @@
 			bottom: 6%;
 			left: 22%;
 		}
+		@media (max-width: 700px) {
+			display: none;
+		}
+	}
+	&__lang {
+		display: flex;
+		align-items: center;
+		gap: 15px;
 
 		&-item {
 			width: 35px;
