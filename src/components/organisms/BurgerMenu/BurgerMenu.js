@@ -2,7 +2,7 @@ import './BurgerMenu.scss'
 import { Component } from '../../../core'
 import '../../atoms'
 import '../../molecules'
-import { EVENTS } from '../../constants'
+import { EVENTS } from '../../../constants'
 
 export class BurgerMenu extends Component {
    constructor() {

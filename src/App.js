@@ -1,6 +1,6 @@
 import { Component } from './core'
 import './components'
-import { EVENTS } from './components/constants'
+import { EVENTS } from './constants'
 
 export class App extends Component {
    constructor() {
