@@ -5,36 +5,36 @@ import '../../molecules';
 import { EVENTS } from '../../../constants';
 
 export class Header extends Component {
-   constructor() {
-      super();
-      this.state = {
-         navItems: [
-            {
-               href: '#',
-               label: 'Программы питания',
-            },
-            {
-               href: '#',
-               label: 'Бизнес-ланчи',
-            },
-            {
-               href: '#',
-               label: 'Gastro Shop',
-            },
-            {
-               href: '#',
-               label: 'О нас',
-            },
-            {
-               href: '#',
-               label: 'Блог',
-            },
-         ]
-      }
-   }
+	constructor() {
+		super();
+		this.state = {
+			navItems: [
+				{
+					href: '#',
+					label: 'Программы питания',
+				},
+				{
+					href: '#',
+					label: 'Бизнес-ланчи',
+				},
+				{
+					href: '#',
+					label: 'Gastro Shop',
+				},
+				{
+					href: '#',
+					label: 'О нас',
+				},
+				{
+					href: '#',
+					label: 'Блог',
+				},
+			],
+		};
+	}
 
-   render() {
-      return `
+	render() {
+		return `
          <header class="header">
             <div class="container">
                <div class="header-container">
@@ -65,7 +65,7 @@ export class Header extends Component {
             </div>
          </header>
       `;
-   }
+	}
 }
 
-customElements.define('gastro-header', Header)
+customElements.define('gastro-header', Header);
