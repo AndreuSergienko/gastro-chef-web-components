@@ -1,3 +1,5 @@
+@import '../../../scss/theme/colors.scss';
+
 .action-button {
 	display: flex;
 	justify-content: center;
@@ -8,6 +10,33 @@
 	width: 100%;
 	height: 64px;
 	cursor: pointer;
+}
+
+.primary-button {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	flex-shrink: 0;
+	font-family: 'Comfortaa';
+	font-style: normal;
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 133.8%;
+	letter-spacing: 0.025em;
+	border: 3px solid $primary-color;
+	color: #f5faff;
+	padding: 12px 0;
+	cursor: pointer;
+	background: $primary-color;
+	box-shadow: 0px 0px 40px rgba(86, 86, 86, 0.3);
+	border-radius: 190px;
+	transition: 0.3s;
+
+	&:hover {
+		background: #f5faff;
+		color: $primary-color;
+	}
 }
 
 .header {
