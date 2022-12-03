@@ -58,7 +58,7 @@ export class MySwiper extends Component {
       return `
          <div class="swiper ${this.props.swiperclassname}">
             <div class="swiper-wrapper">
-               ${JSON.parse(this.props.slides).map((slide, index) => (`		
+               ${JSON.parse(this.props.slides).map((slide) => (`		
                   <div class="swiper-slide">
                      <div class="${this.props.swiperclassname}-slide">
                         <div class="container slide-container">
