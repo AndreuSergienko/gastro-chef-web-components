@@ -105,8 +105,7 @@ export class MySwiper extends Component {
                            />
                         </div>
                      </div>
-                  </div>            
-                  `))
+                  </div>`))
             .join('')}
             </div>
         
