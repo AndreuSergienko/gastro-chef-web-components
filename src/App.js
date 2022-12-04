@@ -24,7 +24,7 @@ export class App extends Component {
 				},
 				{
 					href: '#',
-					modificator: 'veggle',
+					modifier: 'veggle',
 					icon: {
 						src: 'carrot.svg',
 						title: 'Овощи',
@@ -33,7 +33,7 @@ export class App extends Component {
 				},
 				{
 					href: '#',
-					modificator: 'bottle',
+					modifier: 'bottle',
 					icon: {
 						src: 'bottle.svg',
 						title: 'Напитки',
@@ -58,6 +58,56 @@ export class App extends Component {
 					sign: '5 стол',
 				},
 			],
+			advantagesItems: [
+				{
+					img: {
+						modifier: 'save-nature',
+						src: '01.svg',
+						alt: 'Save Nature'
+					},
+					info: 'Бережём природу. Эко-тара и проборы.',
+				},
+				{
+					img: {
+						modifier: 'no-repeating',
+						src: '02.svg',
+						alt: 'No Repeating Dishes'
+					},
+					info: '28 дней без повторения, более 300 блюд!',
+				},
+				{
+					img: {
+						modifier: 'free-change',
+						src: '03.svg',
+						alt: 'Free Dishes Change'
+					},
+					info: 'Бесплатно заменяем блюда и ингредиенты.',
+				},
+				{
+					img: {
+						modifier: 'anytime',
+						src: '04.svg',
+						alt: 'Cooking At Anytime'
+					},
+					info: 'Готовим ночью, упаковываем и отправляем Вам!',
+				},
+				{
+					img: {
+						modifier: 'track',
+						src: '05.svg',
+						alt: 'Provide Convenient Delivery'
+					},
+					info: 'Ежедневная удобная и бесплатная доставка с 6:00 до 10:00',
+				},
+				{
+					img: {
+						modifier: 'save-energy',
+						src: '06.svg',
+						alt: 'Save Your Energy'
+					},
+					info: 'Сохраняем Вашу энергию и до 14 часов в неделю освобождая от готовки!',
+				},
+			]
 		};
 	}
 
@@ -95,15 +145,19 @@ export class App extends Component {
 
 	render() {
 		return `
-         <gastro-header></gastro-header>
-         <gastro-burger-menu doopenmenu="${this.state.isMenuOpened}">
-         </gastro-burger-menu>
-         <gastro-aside items='${JSON.stringify(this.state.asideItems)}'>
-         </gastro-aside>
-         <gastro-hero></gastro-hero>
+		<gastro-header></gastro-header>
+		<gastro-burger-menu doopenmenu="${this.state.isMenuOpened}">
+		</gastro-burger-menu>
+		<gastro-aside items='${JSON.stringify(this.state.asideItems)}'>
+		</gastro-aside>
+		<gastro-hero></gastro-hero>
+		<gastro-advantages
+		items='${JSON.stringify(this.state.advantagesItems)}'
+		>
+		</gastro-advantages>
 
-         <div class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}">
-         </div>
+		<div class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}">
+		</div>
       `;
 	}
 }
