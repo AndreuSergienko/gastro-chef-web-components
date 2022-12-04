@@ -107,7 +107,7 @@ export class App extends Component {
 					},
 					info: 'Сохраняем Вашу энергию и до 14 часов в неделю освобождая от готовки!',
 				},
-			]
+			],
 		};
 	}
 
@@ -145,19 +145,19 @@ export class App extends Component {
 
 	render() {
 		return `
-		<gastro-header></gastro-header>
-		<gastro-burger-menu doopenmenu="${this.state.isMenuOpened}">
-		</gastro-burger-menu>
-		<gastro-aside items='${JSON.stringify(this.state.asideItems)}'>
-		</gastro-aside>
-		<gastro-hero></gastro-hero>
-		<gastro-advantages
-		items='${JSON.stringify(this.state.advantagesItems)}'
-		>
-		</gastro-advantages>
+			<gastro-header></gastro-header>
+			<gastro-burger-menu isopen="${this.state.isMenuOpened}">
+			</gastro-burger-menu>
+			<gastro-aside items='${JSON.stringify(this.state.asideItems)}'>
+			</gastro-aside>
+			<gastro-hero></gastro-hero>
+			<gastro-advantages items='${JSON.stringify(this.state.advantagesItems)}'>
+			</gastro-advantages>
+			<gastro-diet></gastro-diet>
 
-		<div class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}">
-		</div>
+
+			<div class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}">
+			</div>
       `;
 	}
 }
