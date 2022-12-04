@@ -26,12 +26,10 @@ export class Button extends Component {
 	render() {
 		return `
       <button class="${this.props.classname}">
-         ${
-				this.props.src
-					? `<img src="../../../assets/images/${this.props.src}" alt="Button" />`
-					: ''
-			}
-         ${this.props.content ?? ''}
+        ${this.props.src ? `
+					 <img src="../../../assets/images/${this.props.src}" alt="Button" />
+					`: ''}
+        ${this.props.content ?? ''}
       </button>
       `;
 	}
