@@ -34,12 +34,12 @@ export class BurgerMenu extends Component {
    }
 
    static get observedAttributes() {
-      return ['doopenmenu']
+      return ['isopen']
    }
 
    render() {
       return `
-         <div class="burger__menu ${JSON.parse(this.props.doopenmenu) ? 'open' : ''}">
+         <div class="burger__menu ${JSON.parse(this.props.isopen) ? 'open' : ''}">
                <div class="burger__top">
                   <gastro-navigation 
                      items='${JSON.stringify(this.state.navItems)}'
