@@ -55,11 +55,13 @@ export class Hero extends Component {
 
 	render() {
 		return `
-        <gastro-swiper
-            slides='${JSON.stringify(this.state.slides)}'
-            swiperclassname="heroSwiper"
-        >
-        </gastro-swiper>
+		<section class="hero">
+			<gastro-swiper
+				slides='${JSON.stringify(this.state.slides)}'
+				swiperclassname="heroSwiper"
+			>
+			</gastro-swiper>
+		</section>
         `;
 	}
 }
