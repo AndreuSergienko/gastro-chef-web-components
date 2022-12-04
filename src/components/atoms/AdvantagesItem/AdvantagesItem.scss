@@ -1,0 +1,59 @@
+.advantages {
+	&__item {
+		flex-grow: 0;
+		text-align: center;
+
+		&-img {
+			&--save-nature {
+				width: 50px;
+				@media (max-width: 768px) {
+					width: 45px;
+				}
+				@media (max-width: 610px) {
+					width: 43px;
+				}
+			}
+			&--free-change {
+				width: 67px;
+				@media (max-width: 768px) {
+					width: 55px;
+				}
+			}
+			&--anytime,
+			&--save-energy,
+			&--no-repeating {
+				width: 65px;
+				@media (max-width: 768px) {
+					width: 55px;
+				}
+			}
+			&--track {
+				width: 94px;
+				@media (max-width: 768px) {
+					width: 77px;
+				}
+			}
+		}
+
+		&-info {
+			margin-top: 20px;
+			font-family: 'Montserrat';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 12px;
+			line-height: 130.22%;
+			text-align: center;
+			@media (max-width: 992px) {
+				font-size: 11px;
+			}
+			@media (max-width: 768px) {
+				font-size: 10px;
+			}
+			@media (max-width: 610px) {
+				max-width: 100px;
+				margin: 10px auto 0;
+				font-size: 12px;
+			}
+		}
+	}
+}
