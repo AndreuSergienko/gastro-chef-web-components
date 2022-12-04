@@ -22,8 +22,8 @@ export default class Aside extends Component {
                `<li class="aside__list-item">
                      <a 
                         href="${item.href ?? '#'}"
-                        class="aside__list-link ${item.modificator ?
-                  `aside__list-link--${item.modificator}` : ''
+                        class="aside__list-link ${item.modifier ?
+                  `aside__list-link--${item.modifier}` : ''
                }"
                      >
                         ${item.content ? item.content : ''}
