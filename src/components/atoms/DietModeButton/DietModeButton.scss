@@ -1,0 +1,10 @@
+@import '../../../scss/theme/colors.scss';
+
+.diet {
+	&__modes-btn {
+		&.active {
+			color: $text-clicked;
+			transition: 1s;
+		}
+	}
+}
