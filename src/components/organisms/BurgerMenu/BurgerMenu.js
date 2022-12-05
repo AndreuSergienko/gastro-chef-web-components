@@ -34,12 +34,25 @@ export class BurgerMenu extends Component {
    }
 
    static get observedAttributes() {
-      return ['isopen']
+      return ['isopen', 'isclosed']
+   }
+
+   onClick(evt) {
+      if (evt.target.closest('.close-burger')) {
+         this.dispatch(EVENTS.closeMenu)
+      }
+   }
+
+   componentDidMount() {
+      this.addEventListener('click', this.onClick)
    }
 
    render() {
       return `
-         <div class="burger__menu ${JSON.parse(this.props.isopen) ? 'open' : ''}">
+         <div
+            class="burger__menu ${JSON.parse(this.props.isopen) ? 'open' : ''}
+            ${JSON.parse(this.props.isclosed) ? 'closed' : ''}"
+         >
                <div class="burger__top">
                   <gastro-navigation 
                      items='${JSON.stringify(this.state.navItems)}'
