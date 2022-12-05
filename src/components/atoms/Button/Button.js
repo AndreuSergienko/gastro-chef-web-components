@@ -6,19 +6,6 @@ export class Button extends Component {
 		super();
 	}
 
-	onClick(evt) {
-		if (evt.target.closest('.burger-button')) {
-			this.dispatch(this.props.evttype);
-		}
-		if (evt.target.closest('.close-burger')) {
-			this.dispatch(this.props.evttype);
-		}
-	}
-
-	componentDidMount() {
-		this.addEventListener('click', this.onClick);
-	}
-
 	static get observedAttributes() {
 		return ['src', 'content', 'classname', 'evttype'];
 	}
