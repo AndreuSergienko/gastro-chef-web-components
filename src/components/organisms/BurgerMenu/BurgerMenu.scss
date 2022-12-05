@@ -13,6 +13,19 @@
 	}
 }
 
+@keyframes close-burger {
+	0% {
+		top: 0;
+		opacity: 1;
+		visibility: visible;
+	}
+	100% {
+		top: -100%;
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
 .burger {
 	&__menu {
 		max-width: 400px;
@@ -31,6 +44,9 @@
 		@media (max-width: 700px) {
 			&.open {
 				animation: open-burger 0.5s forwards;
+			}
+			&.closed {
+				animation: close-burger 0.5s forwards;
 			}
 		}
 
