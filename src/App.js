@@ -7,7 +7,8 @@ export class App extends Component {
 		super();
 		this.state = {
 			overlayOn: false,
-			isMenuOpened: false,
+			isMenuOpen: false,
+			isMenuClosed: false,
 			asideItems: [
 				{
 					href: '#',
@@ -114,7 +115,8 @@ export class App extends Component {
 	onOpenMenu() {
 		this.setState((state) => ({
 			...state,
-			isMenuOpened: true,
+			isMenuOpen: true,
+			isMenuClosed: false,
 			overlayOn: true,
 		}));
 	}
@@ -122,7 +124,8 @@ export class App extends Component {
 	onCloseMenu() {
 		this.setState((state) => ({
 			...state,
-			isMenuOpened: false,
+			isMenuOpen: false,
+			isMenuClosed: true,
 			overlayOn: false,
 		}));
 	}
@@ -132,7 +135,8 @@ export class App extends Component {
 			this.setState((state) => ({
 				...state,
 				overlayOn: false,
-				isMenuOpened: false,
+				isMenuOpen: false,
+				isMenuClosed: true,
 			}));
 		}
 	}
@@ -146,17 +150,26 @@ export class App extends Component {
 	render() {
 		return `
 			<gastro-header></gastro-header>
-			<gastro-burger-menu isopen="${this.state.isMenuOpened}">
+			<gastro-burger-menu
+				isopen="${this.state.isMenuOpen}"
+				isclosed="${this.state.isMenuClosed}"
+			>
 			</gastro-burger-menu>
-			<gastro-aside items='${JSON.stringify(this.state.asideItems)}'>
+			<gastro-aside
+				items='${JSON.stringify(this.state.asideItems)}'
+			>
 			</gastro-aside>
 			<gastro-hero></gastro-hero>
-			<gastro-advantages items='${JSON.stringify(this.state.advantagesItems)}'>
+			<gastro-advantages
+				items='${JSON.stringify(this.state.advantagesItems)}'
+			>
 			</gastro-advantages>
 			<gastro-diet></gastro-diet>
 
 
-			<div class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}">
+			<div
+				class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}"
+			>
 			</div>
       `;
 	}
