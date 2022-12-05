@@ -7,6 +7,17 @@
 @import './scss/theme/typography.scss';
 @import './scss/theme/breakpoints.scss';
 
+* {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline: none !important;
+}
+
 html {
 	line-height: $mainLineHeight;
 	font-size: $mainFontSize;
