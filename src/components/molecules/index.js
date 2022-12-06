@@ -1,4 +1,5 @@
 export * from './Navigation';
 export * from './Language';
-export * from './Swiper';
+export * from './HeroSwiper';
 export * from './DietModeContent';
+export * from './DishesSwiper';
