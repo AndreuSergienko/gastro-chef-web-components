@@ -5,8 +5,9 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+import './HeroSwiper.scss';
 
-export class MySwiper extends Component {
+export class HeroSwiper extends Component {
    constructor() {
       super();
    }
@@ -119,4 +120,4 @@ export class MySwiper extends Component {
    }
 }
 
-customElements.define('gastro-swiper', MySwiper);
+customElements.define('gastro-hero-swiper', HeroSwiper);
