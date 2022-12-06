@@ -1,5 +1,6 @@
 import { Component } from "../../../core";
 import './DietModeButton.scss';
+import { EVENTS } from "../../../constants";
 
 export class DietModeButton extends Component {
   constructor() {
@@ -11,9 +12,9 @@ export class DietModeButton extends Component {
   }
 
   onClick() {
-    this.dispatch('switch-mode', {
+    this.dispatch(EVENTS.switchMode, {
       mode: this.props.mode,
-      clickedButtonIndex: +this.props.index,
+      clickedModeIndex: +this.props.index,
     })
   }
 
@@ -23,7 +24,7 @@ export class DietModeButton extends Component {
 
   render() {
     this.props.mode = JSON.parse(this.props.mode);
-    this.props.isactive = JSON.parse(this.props.isactive)
+    this.props.isactive = JSON.parse(this.props.isactive);
     const { mode, isactive } = this.props;
     return `
       <button class="diet__modes-btn ${isactive ? 'active' : ''}">
