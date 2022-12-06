@@ -165,7 +165,7 @@ export class App extends Component {
 			>
 			</gastro-advantages>
 			<gastro-diet></gastro-diet>
-
+			<gastro-dishes></gastro-dishes>
 
 			<div
 				class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}"
