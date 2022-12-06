@@ -1,0 +1,35 @@
+.dishesSwiper {
+	margin-top: 60px;
+	height: auto;
+	width: 100%;
+
+	@media (max-width: 1200px) {
+		margin-top: 45px;
+	}
+	@media (max-width: 768px) {
+		margin-top: 30px;
+	}
+
+	&__slide {
+		padding: 40px 0;
+		transition: transform 0.8s ease;
+		&.swiper-slide-active {
+			transform: scale(1.1);
+			transition: transform 0.3s ease;
+		}
+		&.swiper-slide-duplicate-active {
+			transform: scale(1.1);
+			transition: transform 0.3s ease;
+		}
+	}
+
+	&__img {
+		text-align: center;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		border-radius: 30px;
+		box-shadow: 0 0 10px -1px rgba(86, 86, 86, 0.5);
+	}
+}
