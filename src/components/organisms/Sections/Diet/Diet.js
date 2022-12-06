@@ -3,6 +3,7 @@ import './Diet.scss';
 import '../../../atoms/Button';
 import '../../../atoms/DietModeButton';
 import '../../../molecules/DietModeContent';
+import { EVENTS } from "../../../../constants";
 
 export class Diet extends Component {
   constructor() {
@@ -38,7 +39,7 @@ export class Diet extends Component {
           calories: 2400,
         },
       ],
-      activeButtonIndex: 0,
+      activeModeIndex: 0,
       outletMode: {
         title: 'express',
         calories: 800,
@@ -50,7 +51,7 @@ export class Diet extends Component {
   onSwitch({ detail }) {
     this.setState((state) => ({
       ...state,
-      activeButtonIndex: detail.clickedButtonIndex,
+      activeModeIndex: detail.clickedModeIndex,
       outletMode: {
         ...state.outletMode,
         ...detail.mode,
@@ -60,7 +61,7 @@ export class Diet extends Component {
   }
 
   componentDidMount() {
-    this.addEventListener('switch-mode', this.onSwitch)
+    this.addEventListener(EVENTS.switchMode, this.onSwitch)
   }
 
   render() {
@@ -71,7 +72,10 @@ export class Diet extends Component {
         <div class="diet__tabs-btns">
           <gastro-button classname="diet__tabs-btn" content="Программы питания">
           </gastro-button>
-          <gastro-button classname="diet__tabs-btn" content="Специальные программы">
+          <gastro-button
+            classname="diet__tabs-btn"
+            content="Специальные программы"
+          >
           </gastro-button>
         </div>
 
@@ -81,7 +85,7 @@ export class Diet extends Component {
             <gastro-diet-mode-button
               mode='${JSON.stringify(mode)}'
               index='${index}'
-              isactive='${index === this.state.activeButtonIndex ? true : false}'
+              isactive='${index === this.state.activeModeIndex ? true : false}'
             >
             </gastro-diet-mode-button>
           `)).join('')}             
