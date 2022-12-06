@@ -1,6 +1,6 @@
 import './Hero.scss';
 import { Component } from '../../../../core';
-import '../../../molecules/Swiper';
+import '../../../molecules/HeroSwiper';
 
 export class Hero extends Component {
 	constructor() {
@@ -56,11 +56,11 @@ export class Hero extends Component {
 	render() {
 		return `
 		<section class="hero">
-			<gastro-swiper
+			<gastro-hero-swiper
 				slides='${JSON.stringify(this.state.slides)}'
 				swiperclassname="heroSwiper"
 			>
-			</gastro-swiper>
+			</gastro-hero-swiper>
 		</section>
         `;
 	}
