@@ -64,7 +64,7 @@ export class DishesSwiper extends Component {
                 },
                 // when window width is >= 1200px
                 1200: {
-                    slidesPerView: 4.6,
+                    slidesPerView: 4.9,
                     spaceBetween: 40,
                 },
             }
