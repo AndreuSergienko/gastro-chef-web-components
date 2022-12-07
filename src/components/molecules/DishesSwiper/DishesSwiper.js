@@ -77,7 +77,7 @@ export class DishesSwiper extends Component {
 
     render() {
         return `
-        <div class="swiper ${this.props.classname}">        
+        <div class="swiper ${this.props.classname}"> 
             <div class="swiper-wrapper">
             ${JSON.parse(this.props.slides).map(({ img }) => (`
                 <div class="swiper-slide ${this.props.classname}__slide">
