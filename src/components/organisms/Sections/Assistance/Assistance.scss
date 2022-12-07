@@ -1,0 +1,62 @@
+@import '../../../../scss/theme/colors.scss';
+
+.assistance {
+	position: relative;
+	overflow: hidden;
+	padding-top: 300px;
+	padding-bottom: 140px;
+	margin-top: -300px;
+	@media (max-width: 768px) {
+		padding-bottom: 100px;
+	}
+	@media (max-width: 576px) {
+		padding-bottom: 60px;
+	}
+
+	&-container {
+		display: flex;
+		gap: 82px;
+		@media (max-width: 992px) {
+			flex-direction: column;
+			align-items: center;
+			gap: 130px;
+		}
+		@media (max-width: 576px) {
+			gap: 90px;
+		}
+	}
+
+	&__circle-md--transparent {
+		position: absolute;
+		bottom: 40px;
+		left: -300px;
+		width: 520px;
+		height: 520px;
+		border: 30px solid rgba(38, 240, 58, 0.1);
+		border-radius: 50%;
+		z-index: -1;
+		@media (max-width: 1600px) {
+			left: -300px;
+		}
+		@media (max-width: 576px) {
+			left: -400px;
+		}
+	}
+
+	&__circle-md--filled {
+		position: absolute;
+		top: 0;
+		right: -120px;
+		width: 600px;
+		height: 600px;
+		border-radius: 50%;
+		background: rgba(38, 240, 58, 0.1);
+		z-index: -1;
+		@media (max-width: 1600px) {
+			right: -300px;
+		}
+		@media (max-width: 1200px) {
+			right: -450px;
+		}
+	}
+}
