@@ -159,13 +159,17 @@ export class App extends Component {
 				items='${JSON.stringify(this.state.asideItems)}'
 			>
 			</gastro-aside>
-			<gastro-hero></gastro-hero>
-			<gastro-advantages
-				items='${JSON.stringify(this.state.advantagesItems)}'
-			>
-			</gastro-advantages>
-			<gastro-diet></gastro-diet>
-			<gastro-dishes></gastro-dishes>
+			<main class="main">
+				<gastro-hero></gastro-hero>
+				<gastro-advantages
+					items='${JSON.stringify(this.state.advantagesItems)}'
+				>
+				</gastro-advantages>
+				<gastro-diet></gastro-diet>
+				<gastro-dishes></gastro-dishes>
+				<gastro-assistance>
+				</gastro-assistance>
+			</main>
 
 			<div
 				class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}"
