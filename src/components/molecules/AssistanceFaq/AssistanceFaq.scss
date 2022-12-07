@@ -1,0 +1,133 @@
+@import '../../../scss/theme/colors.scss';
+
+gastro-assistance-faq {
+	flex: 1 1 auto;
+	@media (max-width: 992px) {
+		flex: initial;
+		width: 100%;
+	}
+}
+
+.assistance {
+	&__faq {
+		margin-top: -30px;
+		width: 100%;
+
+		&-title {
+			font-family: 'Comfortaa';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 25px;
+			line-height: 28px;
+			text-align: center;
+			color: #020202;
+			@media (max-width: 576px) {
+				font-size: 20px;
+				line-height: 22px;
+			}
+		}
+
+		&-questions {
+			margin-top: 35px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			@media (max-width: 576px) {
+				margin-top: 30px;
+			}
+		}
+
+		&-question {
+			background: #f5faff;
+			box-shadow: 0px 0px 20px rgba(86, 86, 86, 0.2);
+			border-radius: 190px;
+			cursor: pointer;
+			transition: 0.3s;
+			&:hover {
+				background: $primary-color;
+				transition: 0.2s;
+			}
+			&:hover &-text {
+				color: #f5faff;
+				transition: 0.2s;
+			}
+			&:hover &-open-btn {
+				color: #f5faff;
+				transition: 0.2s;
+			}
+
+			&-btn-group {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px 20px;
+				gap: 15px;
+			}
+
+			&-text {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 133.8%;
+				letter-spacing: 0.025em;
+				color: #020202;
+				transition: 0.3s;
+				@media (max-width: 576px) {
+					font-size: 13px;
+				}
+			}
+
+			&-open-btn {
+				background: transparent;
+				color: #020202;
+				transition: 0.3s;
+			}
+
+			&-answer {
+				position: fixed;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				visibility: hidden;
+				opacity: 0;
+				background-color: rgba(0, 0, 0, 0.7);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 150;
+				transition: 0.2s;
+				@media (max-width: 992px) {
+				}
+
+				&.answer-open {
+					transition: 0.2s;
+					visibility: visible;
+					opacity: 1;
+				}
+
+				&-item {
+					border-radius: 30px;
+					background: #f5faff;
+					padding: 50px 30px;
+					max-width: 500px;
+					width: 100%;
+					@media (max-width: 992px) {
+					}
+
+					span {
+						font-family: 'Montserrat';
+						font-style: normal;
+						font-weight: 500;
+						font-size: 16px;
+						line-height: 133.8%;
+						letter-spacing: 0.025em;
+						color: #000;
+						@media (max-width: 992px) {
+						}
+					}
+				}
+			}
+		}
+	}
+}
