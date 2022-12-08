@@ -5,3 +5,4 @@ export * from './DietModeContent';
 export * from './DishesSwiper';
 export * from './AssistanceOrder';
 export * from './AssistanceFaq';
+export * from './Form';
