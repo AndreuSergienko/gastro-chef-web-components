@@ -1,64 +1,71 @@
 import './AssistanceOrder.scss'
 import { Component } from '../../../core'
+import { FormManager, Validator } from '../../../core';
+import { initialFieldsState } from './initialState'
+import '../../molecules/Form'
 
 export class AssistanceOrder extends Component {
     constructor() {
         super()
+        this.state = {
+            error: "",
+            isLoading: false,
+            fields: {
+                ...initialFieldsState,
+            },
+        };
+
+        this.form = new FormManager();
+    }
+
+    validateForm = (evt) => {
+        if (evt.target.closest("gastro-input")) {
+            this.form.init(this.querySelector("#order-form"), {
+                username: [
+                    Validator.required('The field should not be empty')
+                ],
+                usertel: [
+                    Validator.phone('The phone is wrong'),
+                    Validator.required('The field should not be empty')
+                ],
+            });
+        }
+    };
+
+    validate = (evt) => {
+        this.setState((state) => {
+            return {
+                ...state,
+                fields: {
+                    ...state.fields,
+                    ...evt.detail,
+                },
+            };
+        });
+    };
+
+    componentDidMount() {
+        this.addEventListener("click", this.validateForm);
+        this.addEventListener('validate-controls', this.validate);
+        this.addEventListener("submit", this.form.handleSubmit(this.registerUser));
     }
 
     render() {
+
         return `
         <div class="assistance__order">
-        <h3 class="assistance__order-title">Оформить заказ</h3>
-        <p class="assistance__order-comment">
-            Обсудите все детали заказа по телефону или сами укажите все
-            подробности онлайн
-        </p>
-        <form class="assistance__order-form">
-            <div class="assistance__order-form-field">
-                <label class="assistance__order-form-label correct">
-                    Имя
-                </label>
-                <input class="assistance__order-form-input" autocomplete="off" type="text" name="user-name" value="" placeholder="Enter your name" />
-            </div>
-            <div class="assistance__order-form-field">
-                <label class="assistance__order-form-label uncorrect">
-                    Номер телефона
-                </label>
-                <input class="assistance__order-form-input" autocomplete="off" type="tel" name="user-tel" value="" placeholder="Enter your phone" />
-            </div>
-            <div class="assistance__order-form-terms">
-                <div class="assistance__order-form-terms-row">
-                    <label class="assistance__order-form-terms-label">
-                        <input type="checkbox" checked class="assistance__order-form-terms-checkbox" />
-                        <span class="custom-checkbox"></span>
-                        <span class="assistance__order-form-terms-label-text">Тест-день! Получить скидку -30%?</span>
-                    </label>
-                </div>
-                <div class="assistance__order-form-terms-row">
-                    <label class="assistance__order-form-terms-label">
-                        <input type="checkbox" class="assistance__order-form-terms-checkbox" />
-                        <span class="custom-checkbox"></span>
-                        <span class="assistance__order-form-terms-label-text">
-                            Согласен с
-                            <a class="assistance__order-form-terms-label-text-link" href="#">
-                                условиями сотрудничества
-                            </a>
-                        </span>
-                    </label>
-                </div>
-            </div>
-            <div class="assistance__order-form-btns">
-                <button type="button" class="assistance__order-form-btn primary-button assistance__order-form-btn--tel">
-                    Заказ по телефону
-                </button>
-                <p class="assistance__order-form-btns-text">или</p>
-                <button type="button" class="assistance__order-form-btn primary-button assistance__order-form-btn--online">
-                    Онлайн заказ
-                </button>
-            </div>
-        </form>
-    </div>
+            <h3 class="assistance__order-title">Оформить заказ</h3>
+            <p class="assistance__order-comment">
+                Обсудите все детали заказа по телефону или сами укажите все
+                подробности онлайн
+            </p>
+            <gastro-form
+                fields='${JSON.stringify(this.state.fields)}'
+                class-name="assistance__order-form"
+                id="order-form"
+            >
+            </gastro-form>
+        </div>
         `
     }
 }
