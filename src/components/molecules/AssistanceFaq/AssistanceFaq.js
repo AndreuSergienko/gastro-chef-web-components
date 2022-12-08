@@ -32,7 +32,7 @@ export class AssistanceFaq extends Component {
             <div class="assistance__faq-question">
                 <div class="assistance__faq-question-btn-group">
                     <span class="assistance__faq-question-text">
-                        Можно ли менять время доставки\место?
+                        Можно ли менять время доставки и место?
                     </span>
                     <button class="assistance__faq-question-open-btn">
                         <i class="fa-solid fa-angle-right"></i>
