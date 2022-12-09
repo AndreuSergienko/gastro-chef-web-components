@@ -1,0 +1,78 @@
+@import '../../../scss/theme/colors.scss';
+
+.assistance {
+	&__faq {
+		&-question {
+			background: #f5faff;
+			box-shadow: 0px 0px 20px rgba(86, 86, 86, 0.2);
+			border-radius: 20px;
+			padding: 0 20px;
+			color: #020202;
+			cursor: pointer;
+			transition: 0.3s;
+			&:hover {
+				background: $primary-color;
+				transition: 0.2s;
+			}
+			&:hover &-text {
+				color: #f5faff;
+				transition: 0.2s;
+			}
+			&:hover &-open-btn {
+				color: #f5faff;
+				transition: 0.2s;
+			}
+			&.open {
+				background: $primary-color;
+				color: #f5faff;
+			}
+
+			&-btn-group {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 10px 0;
+				gap: 15px;
+			}
+
+			&-text {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 133.8%;
+				letter-spacing: 0.025em;
+				color: inherit;
+				transition: 0.3s;
+				@media (max-width: 576px) {
+					font-size: 13px;
+				}
+			}
+
+			&-open-btn {
+				background: transparent;
+				color: inherit;
+				transition: 0.3s;
+			}
+
+			&-answer {
+				display: none;
+				padding: 10px 0;
+				&.open {
+					display: block;
+				}
+
+				span {
+					font-family: 'Montserrat';
+					font-style: normal;
+					font-weight: 500;
+					font-size: 16px;
+					line-height: 133.8%;
+					letter-spacing: 0.025em;
+					color: inherit;
+					@media (max-width: 992px) {
+					}
+				}
+			}
+		}
+	}
+}
