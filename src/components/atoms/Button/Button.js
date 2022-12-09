@@ -7,12 +7,15 @@ export class Button extends Component {
 	}
 
 	static get observedAttributes() {
-		return ['src', 'content', 'classname', 'evttype'];
+		return ['type', 'src', 'content', 'classname', 'evttype'];
 	}
 
 	render() {
 		return `
-      <button class="${this.props.classname}">
+      <button
+		class="${this.props.classname}"
+		type=${this.props.type ?? 'button'}
+	>
         ${this.props.src ? `
 					 <img src="../../../assets/images/${this.props.src}" alt="Button" />
 					`: ''}
