@@ -17,7 +17,9 @@ export class Form extends Component {
         const { username, usertel } = fields
 
         return `
-        <form class="${this.props['class-name'] ?? ''}" id="${this.props.id ?? ''}">
+        <form 
+            class="${this.props['class-name'] ?? ''}" id="${this.props.id ?? ''}"
+        >
             <div class="${this.props['class-name'] ?? ''}-field">
                 <gastro-input
                     type="text"
@@ -69,13 +71,17 @@ export class Form extends Component {
                 </div>
             </div>
             <div class="assistance__order-form-btns">
-                <button type="button" class="assistance__order-form-btn primary-button assistance__order-form-btn--tel">
-                    Заказ по телефону
-                </button>
+                <gastro-button
+                    content="Заказ по телефону"
+                    classname="assistance__order-form-btn primary-button assistance__order-form-btn--tel"
+                >
+                </gastro-button>
                 <p class="assistance__order-form-btns-text">или</p>
-                <button type="button" class="assistance__order-form-btn primary-button assistance__order-form-btn--online">
-                    Онлайн заказ
-                </button>
+                <gastro-button
+                    content="Онлайн заказ"
+                    classname="assistance__order-form-btn primary-button assistance__order-form-btn--online"
+                >
+                </gastro-button>
             </div>
         </form>
         `
