@@ -69,7 +69,8 @@
 					line-height: 133.8%;
 					letter-spacing: 0.025em;
 					color: inherit;
-					@media (max-width: 992px) {
+					@media (max-width: 576px) {
+						font-size: 13px;
 					}
 				}
 			}
