@@ -13,9 +13,6 @@
 		padding: 50px 0;
 	}
 
-	&-container {
-	}
-
 	&__tabs {
 		&-btns {
 			display: flex;
@@ -87,88 +84,15 @@
 			}
 			@media (max-width: 576px) {
 				display: grid !important;
-				grid-template-columns: repeat(3, 1fr);
+				grid-template-columns: repeat(3, max-content);
 				grid-template-rows: repeat(3, max-content);
 				grid-template-areas:
 					'express-fit slim fitness'
 					'balance-01 balance-02 strong'
 					'maxi-fit maxi-fit maxi-fit';
 				grid-row-gap: 18px;
-			}
-		}
-
-		gastro-diet-mode-button {
-			&:nth-child(1) {
-				grid-area: express-fit;
-			}
-			&:nth-child(2) {
-				grid-area: slim;
-			}
-			&:nth-child(3) {
-				grid-area: fitness;
-			}
-			&:nth-child(4) {
-				grid-area: balance-01;
-			}
-			&:nth-child(5) {
-				grid-area: balance-02;
-			}
-			&:nth-child(6) {
-				grid-area: strong;
-			}
-			&:nth-child(7) {
-				grid-area: maxi-fit;
-			}
-		}
-
-		&-btn {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background: transparent;
-			gap: 7px;
-			max-width: max-content;
-			margin: 0 auto;
-
-			font-style: normal;
-			text-transform: uppercase;
-			color: #000;
-
-			transition: 0.3s;
-			cursor: pointer;
-			&.active {
-				color: $primary-color;
-			}
-			&:hover {
-				color: $primary-color;
-			}
-
-			@media (max-width: 768px) {
-				gap: 4px;
-			}
-
-			&-title {
-				font-family: 'Comfortaa';
-				font-weight: 700;
-				font-size: 18px;
-				line-height: 20px;
-
-				@media (max-width: 768px) {
-					font-size: 12px;
-					line-height: 13px;
-				}
-			}
-
-			&-cal {
-				font-family: 'Montserrat';
-				font-weight: 400;
-				font-size: 14px;
-				line-height: 17px;
-
-				@media (max-width: 768px) {
-					font-size: 10px;
-					line-height: 12px;
-				}
+				justify-content: space-around;
+				justify-items: center;
 			}
 		}
 
