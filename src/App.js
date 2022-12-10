@@ -170,6 +170,7 @@ export class App extends Component {
 				<gastro-assistance>
 				</gastro-assistance>
 			</main>
+			<gastro-footer></gastro-footer>
 
 			<div
 				class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}"
