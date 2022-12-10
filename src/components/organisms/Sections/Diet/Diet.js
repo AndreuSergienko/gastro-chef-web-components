@@ -90,13 +90,11 @@ export class Diet extends Component {
             </gastro-diet-mode-button>
           `)).join('')}             
           </div>
-
-          <div class="diet__modes-content">
-            <gastro-diet-mode-content
-              mode='${JSON.stringify(this.state.outletMode)}'
-            >
-            </gastro-diet-mode-content>
-          </div>
+          
+          <gastro-diet-mode-content
+            mode='${JSON.stringify(this.state.outletMode)}'
+          >
+          </gastro-diet-mode-content>
         </div>
       </div>
     </div>
