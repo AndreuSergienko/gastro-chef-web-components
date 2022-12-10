@@ -6,3 +6,4 @@ export * from './DishesSwiper';
 export * from './AssistanceOrder';
 export * from './AssistanceFaq';
 export * from './Form';
+export * from './Socials';
