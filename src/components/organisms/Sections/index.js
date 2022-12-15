@@ -3,3 +3,8 @@ export * from './Advantages';
 export * from './Diet';
 export * from './Dishes';
 export * from './Assistance';
+export * from './Greet';
+export * from './Story';
+export * from './Team';
+export * from './Tagline';
+export * from './Articles';
