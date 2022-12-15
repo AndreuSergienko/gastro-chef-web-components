@@ -7,19 +7,22 @@ export class Logo extends Component {
    }
 
    static get observedAttributes() {
-      return ['href', 'classname', 'src']
+      return ['to', 'classname', 'src']
    }
 
    render() {
       return `
-         <a href="${this.props.href ?? '#'}" class="${this.props.classname}__logo">
+         <div
+            href="${this.props.to ?? '/'}"
+            class="${this.props.classname}__logo"
+         >
             <img
              src="../../../assets/images/${this.props.src}"
              class="${this.props.classname}__logo-img" 
              alt="Logo"
             />
             <span class="${this.props.classname}__logo-sign">healthy ration</span>
-         </a>
+         </div>
       `
    }
 }
