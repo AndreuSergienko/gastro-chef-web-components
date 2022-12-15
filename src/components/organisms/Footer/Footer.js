@@ -3,6 +3,7 @@ import { Component } from '../../../core';
 import '../../molecules/Navigation'
 import '../../atoms/Logo'
 import '../../molecules/Socials'
+import { APP_ROUTES } from '../../../constants'
 
 export class Footer extends Component {
     constructor() {
@@ -10,23 +11,23 @@ export class Footer extends Component {
         this.state = {
             navItems: [
                 {
-                    href: '#',
+                    to: `${APP_ROUTES.homePage}`,
+                    label: 'Главная',
+                },
+                {
+                    to: '/',
                     label: 'Программы питания',
                 },
                 {
-                    href: '#',
-                    label: 'Бизнес-ланчи',
-                },
-                {
-                    href: '#',
+                    to: '/',
                     label: 'Gastro Shop',
                 },
                 {
-                    href: '#',
+                    to: `${APP_ROUTES.aboutPage}`,
                     label: 'О нас',
                 },
                 {
-                    href: '#',
+                    to: `${APP_ROUTES.blogPage}`,
                     label: 'Блог',
                 },
             ],
@@ -74,12 +75,13 @@ export class Footer extends Component {
                         classname="footer"
                     >
                     </gastro-navigation>
-                    <gastro-logo
-                        href="#"
-                        classname="footer"
+                    <gastro-nav-link to="${APP_ROUTES.homePage}">
+                     <gastro-logo
+                        classname="footer" 
                         src="footer/footer-logo.png"
-                    >
-                    </gastro-logo>
+                     >
+                     </gastro-logo>
+                  </gastro-nav-link>
 					<div class="footer__contacts">
 						<a href="#" class="footer__contacts-terms">
 							Условия сотрудничества
