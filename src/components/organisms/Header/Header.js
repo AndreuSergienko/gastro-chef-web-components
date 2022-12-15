@@ -1,32 +1,28 @@
 import './Header.scss';
-import { Component } from '../../../core';
+import * as core from '../../../core';
 import '../../atoms';
 import '../../molecules';
-import { EVENTS } from '../../../constants';
+import { EVENTS, APP_ROUTES } from '../../../constants';
 
-export class Header extends Component {
+export class Header extends core.Component {
    constructor() {
       super();
       this.state = {
          navItems: [
             {
-               href: '#',
+               to: '/',
                label: 'Программы питания',
             },
             {
-               href: '#',
-               label: 'Бизнес-ланчи',
-            },
-            {
-               href: '#',
+               to: '/',
                label: 'Gastro Shop',
             },
             {
-               href: '#',
+               to: `${APP_ROUTES.aboutPage}`,
                label: 'О нас',
             },
             {
-               href: '#',
+               to: `${APP_ROUTES.blogPage}`,
                label: 'Блог',
             },
          ],
@@ -48,12 +44,13 @@ export class Header extends Component {
          <header class="header">
             <div class="container">
                <div class="header-container">
-                  <gastro-logo 
-                     href="#" 
-                     classname="header" 
-                     src="header/logo.png"
-                  >
-                  </gastro-logo>
+                  <gastro-nav-link to="${APP_ROUTES.homePage}">
+                     <gastro-logo
+                        classname="header" 
+                        src="header/logo.png"
+                     >
+                     </gastro-logo>
+                  </gastro-nav-link>
                   <gastro-navigation 
                      items='${JSON.stringify(this.state.navItems)}'
                      classname="header"
