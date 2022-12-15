@@ -1,7 +1,7 @@
 import './Navigation.scss'
-import { Component } from '../../../core'
+import * as core from '../../../core'
 
-export class Navigation extends Component {
+export class Navigation extends core.Component {
    constructor() {
       super()
    }
@@ -14,18 +14,21 @@ export class Navigation extends Component {
       return `
          <nav class="${this.props.classname}__nav" >
             <ul class="${this.props.classname}__list">
-               ${JSON.parse(this.props.items)
-                  .map((item) => (
-                     `
-                     <li class="${this.props.classname}__list-item">
-                           <a href="${item.href ?? '#'}" class="${this.props.classname}__list-link">
-                              ${item.label ?? 'link label'}
-                           </a>
-                     </li>
-                     `
-                  ))
-                  .join('')
-               }
+            ${JSON.parse(this.props.items)
+            .map((item) => (
+               `
+               <li class="${this.props.classname}__list-item">
+                  <gastro-nav-link
+                     to="${item.to}"
+                  >
+                     <span class="${this.props.classname}__list-link">
+                        ${item.label}
+                     </span>
+                  </gastro-nav-link>
+               </li>
+                `
+            ))
+            .join('')}
             </ul>
          </nav>
       `
