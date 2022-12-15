@@ -1,8 +1,8 @@
-import { Component } from './core';
+import * as core from './core';
 import './components';
-import { EVENTS } from './constants';
+import { EVENTS, APP_ROUTES } from './constants';
 
-export class App extends Component {
+export class App extends core.Component {
 	constructor() {
 		super();
 		this.state = {
@@ -59,56 +59,6 @@ export class App extends Component {
 					sign: '5 стол',
 				},
 			],
-			advantagesItems: [
-				{
-					img: {
-						modifier: 'save-nature',
-						src: '01.svg',
-						alt: 'Save Nature'
-					},
-					info: 'Бережём природу. Эко-тара и проборы.',
-				},
-				{
-					img: {
-						modifier: 'no-repeating',
-						src: '02.svg',
-						alt: 'No Repeating Dishes'
-					},
-					info: '28 дней без повторения, более 300 блюд!',
-				},
-				{
-					img: {
-						modifier: 'free-change',
-						src: '03.svg',
-						alt: 'Free Dishes Change'
-					},
-					info: 'Бесплатно заменяем блюда и ингредиенты.',
-				},
-				{
-					img: {
-						modifier: 'anytime',
-						src: '04.svg',
-						alt: 'Cooking At Anytime'
-					},
-					info: 'Готовим ночью, упаковываем и отправляем Вам!',
-				},
-				{
-					img: {
-						modifier: 'track',
-						src: '05.svg',
-						alt: 'Provide Convenient Delivery'
-					},
-					info: 'Ежедневная удобная и бесплатная доставка с 6:00 до 10:00',
-				},
-				{
-					img: {
-						modifier: 'save-energy',
-						src: '06.svg',
-						alt: 'Save Your Energy'
-					},
-					info: 'Сохраняем Вашу энергию и до 14 часов в неделю освобождая от готовки!',
-				},
-			],
 		};
 	}
 
@@ -149,7 +99,9 @@ export class App extends Component {
 
 	render() {
 		return `
-			<gastro-header></gastro-header>
+		<gastro-router>
+			<gastro-header>
+			</gastro-header>
 			<gastro-burger-menu
 				isopen="${this.state.isMenuOpen}"
 				isclosed="${this.state.isMenuClosed}"
@@ -158,26 +110,44 @@ export class App extends Component {
 			<gastro-aside
 				items='${JSON.stringify(this.state.asideItems)}'
 			>
-			</gastro-aside>
+			</gastro-aside>			
 			<main class="main">
-				<gastro-hero></gastro-hero>
-				<gastro-advantages
-					items='${JSON.stringify(this.state.advantagesItems)}'
+				<gastro-route
+					path="${APP_ROUTES.homePage}"
+					component="gastro-home-page"
+					title="Home Page"
 				>
-				</gastro-advantages>
-				<gastro-diet></gastro-diet>
-				<gastro-dishes></gastro-dishes>
-				<gastro-assistance>
-				</gastro-assistance>
+				</gastro-route>
+				<gastro-route 
+					path="${APP_ROUTES.blogPage}" 
+					component="gastro-blog-page"
+					title="Blog Page"
+				>
+				</gastro-route>
+				<gastro-route 
+					path="${APP_ROUTES.aboutPage}" 
+					component="gastro-about-page" 
+					title="About Page"
+				>
+				</gastro-route>
+				<gastro-route 
+					path="${APP_ROUTES.errorPage}" 
+					component="gastro-error-page" 
+					title="Page not found"
+				>
+				</gastro-route>
+				
+				<gastro-outlet></gastro-outlet>
 			</main>
 			<gastro-footer></gastro-footer>
-
 			<div
 				class="overlay ${this.state.overlayOn ? 'overlay-on' : ''}"
 			>
 			</div>
+		</gastro-router>
       `;
 	}
 }
 
 customElements.define('gastro-app', App);
+
