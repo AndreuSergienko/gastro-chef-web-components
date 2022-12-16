@@ -10,11 +10,11 @@ export class Header extends core.Component {
       this.state = {
          navItems: [
             {
-               to: `${APP_ROUTES.SignInPage}`,
+               to: `${APP_ROUTES.signInPage}`,
                label: 'Войти',
             },
             {
-               to: `${APP_ROUTES.SignUpPage}`,
+               to: `${APP_ROUTES.signUpPage}`,
                label: 'Регистрация',
             },
             {
