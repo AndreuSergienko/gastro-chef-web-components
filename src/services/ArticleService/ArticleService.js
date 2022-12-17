@@ -3,19 +3,19 @@ import { APP_COLLECTIONS } from '../../constants'
 
 class ArticleService {
     constructor() {
-        this.database = Database.getInstance()
+        this._database = Database.getInstance()
     }
 
     addArticle(body) {
-        return this.database.create(APP_COLLECTIONS.articles, body)
+        return this._database.create(APP_COLLECTIONS.articles, body)
     }
 
     getArticles() {
-        return this.database.read(APP_COLLECTIONS.articles)
+        return this._database.read(APP_COLLECTIONS.articles)
     }
 
     getArticle(id) {
-        return this.database.readDoc(APP_COLLECTIONS.articles, id)
+        return this._database.readDoc(APP_COLLECTIONS.articles, id)
     }
 }
 
