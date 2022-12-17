@@ -8,11 +8,11 @@ import {
     deleteDoc,
     getDocs
 } from 'firebase/firestore';
-import { CloudService } from '../Cloud';
+import { cloudService } from '../Cloud';
 
 export class Database {
     constructor() {
-        this._database = getFirestore(CloudService.app);
+        this._database = getFirestore(cloudService.app);
     }
 
     create(collectionKey, body) {
