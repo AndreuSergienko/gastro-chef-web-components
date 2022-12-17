@@ -1,5 +1,6 @@
 import './Header.scss';
 import * as core from '../../../core';
+import { eventBus } from '../../../core';
 import '../../atoms';
 import '../../molecules';
 import { APP_EVENTS, APP_ROUTES } from '../../../constants';
@@ -30,6 +31,7 @@ export class Header extends core.Component {
                label: 'Блог',
             },
          ],
+         activeLinkPath: window.location.pathname,
       };
    }
 
@@ -41,6 +43,10 @@ export class Header extends core.Component {
 
    componentDidMount() {
       this.addEventListener('click', this.onClick)
+   }
+
+   componentWillUnmount() {
+      this.removeEventListener('click', this.onClick)
    }
 
    render() {
@@ -57,6 +63,7 @@ export class Header extends core.Component {
                   </gastro-nav-link>
                   <gastro-navigation 
                      items='${JSON.stringify(this.state.navItems)}'
+                     active-link-path="${this.state.activeLinkPath}"
                      classname="header"
                   >
                   </gastro-navigation>
