@@ -7,7 +7,7 @@ export class Navigation extends core.Component {
    }
 
    static get observedAttributes() {
-      return ['items', 'classname']
+      return ['items', 'classname', 'active-link-path']
    }
 
    render() {
@@ -21,7 +21,9 @@ export class Navigation extends core.Component {
                   <gastro-nav-link
                      to="${item.to}"
                   >
-                     <span class="${this.props.classname}__list-link">
+                     <span 
+                        class="${this.props.classname}__list-link ${this.props['active-link-path'] === item.to ? 'active' : ''}"
+                     >
                         ${item.label}
                      </span>
                   </gastro-nav-link>

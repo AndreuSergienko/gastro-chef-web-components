@@ -55,8 +55,8 @@
 				color: $primary-color;
 			}
 
-			&:active {
-				color: #3d9646;
+			&.active {
+				color: $primary-color;
 			}
 		}
 	}
