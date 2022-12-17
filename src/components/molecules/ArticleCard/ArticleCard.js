@@ -1,7 +1,7 @@
-import './Article.scss'
+import './ArticleCard.scss'
 import * as core from '../../../core';
 
-export class Article extends core.Component {
+export class ArticleCard extends core.Component {
     constructor() {
         super()
     }
@@ -42,4 +42,4 @@ export class Article extends core.Component {
     }
 }
 
-customElements.define('gastro-articles-item', Article);
+customElements.define('gastro-article-card', ArticleCard);
