@@ -1,69 +1,53 @@
 import { Component } from "../../../core";
+import { articleService } from "../../../services";
 import '../../organisms/Sections'
+import '../../atoms/Preloader'
 
 export class BlogPage extends Component {
     constructor() {
         super();
         this.state = {
-            articlesItems: [
-                {
-                    poster: 'article-01.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-02.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-03.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-01.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-02.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-03.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-01.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-02.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-                {
-                    poster: 'article-03.png',
-                    title: 'Как поменять свои пищевые привычки?',
-                    date: '15.12.2022',
-                },
-            ],
-            headerModificator: 'circle-bg',
+            articles: [],
+            isLoading: false,
         }
     }
 
-    componentDidMount() {
+    toggleIsLoading() {
+        this.setState((state) => {
+            return {
+                ...state,
+                isLoading: !state.isLoading,
+            };
+        });
+    }
 
+    getArticles() {
+        this.toggleIsLoading()
+        articleService.getArticles()
+            .then((data) => {
+                this.setState((state) => {
+                    return {
+                        ...state,
+                        articles: data
+                    }
+                })
+            }).finally(() => {
+                this.toggleIsLoading()
+            })
+    }
+
+    componentDidMount() {
+        this.getArticles()
     }
 
     render() {
         return `
-        <gastro-articles items='${JSON.stringify(this.state.articlesItems)}'>
-        </gastro-articles>
+        <gastro-preloader is-loading="${this.state.isLoading}">
+            <gastro-articles
+                items='${JSON.stringify(this.state.articles)}'
+            >
+            </gastro-articles>
+        </gastro-preloader>
     `;
     }
 }
