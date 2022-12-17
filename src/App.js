@@ -125,6 +125,12 @@ export class App extends core.Component {
 				>
 				</gastro-route>
 				<gastro-route 
+					path="${APP_ROUTES.blogPage}/details" 
+					component="gastro-blog-details-page"
+					title=" Page"
+				>
+				</gastro-route>
+				<gastro-route 
 					path="${APP_ROUTES.aboutPage}" 
 					component="gastro-about-page" 
 					title="About Page"
