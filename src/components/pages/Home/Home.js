@@ -68,8 +68,6 @@ export class HomePage extends Component {
         })
     }
 
-
-
     componentDidMount() {
         this.scrollToTop()
     }
