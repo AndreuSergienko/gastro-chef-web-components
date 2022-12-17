@@ -1,4 +1,4 @@
-export const EVENTS = {
+export const APP_EVENTS = {
    openMenu: 'open-menu',
    closeMenu: 'close-menu',
    switchMode: 'switch-mode',
@@ -13,4 +13,8 @@ export const APP_ROUTES = {
    blogPage: '/blog',
    aboutPage: '/about',
    errorPage: '*',
+}
+
+export const APP_COLLECTIONS = {
+   articles: 'articles',
 }

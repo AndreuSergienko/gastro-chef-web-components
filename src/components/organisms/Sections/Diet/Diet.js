@@ -3,7 +3,7 @@ import './Diet.scss';
 import '../../../atoms/Button';
 import '../../../atoms/DietModeButton';
 import '../../../molecules/DietModeContent';
-import { EVENTS } from "../../../../constants";
+import { APP_EVENTS } from "../../../../constants";
 
 export class Diet extends Component {
   constructor() {
@@ -61,7 +61,7 @@ export class Diet extends Component {
   }
 
   componentDidMount() {
-    this.addEventListener(EVENTS.switchMode, this.onSwitch)
+    this.addEventListener(APP_EVENTS.switchMode, this.onSwitch)
   }
 
   render() {

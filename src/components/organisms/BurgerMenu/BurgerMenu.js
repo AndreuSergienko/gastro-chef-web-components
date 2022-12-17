@@ -2,7 +2,7 @@ import './BurgerMenu.scss'
 import { Component } from '../../../core'
 import '../../atoms'
 import '../../molecules'
-import { EVENTS } from '../../../constants'
+import { APP_EVENTS } from '../../../constants'
 
 export class BurgerMenu extends Component {
    constructor() {
@@ -39,7 +39,7 @@ export class BurgerMenu extends Component {
 
    onClick(evt) {
       if (evt.target.closest('.close-burger')) {
-         this.dispatch(EVENTS.closeMenu)
+         this.dispatch(APP_EVENTS.closeMenu)
       }
    }
 
@@ -62,7 +62,7 @@ export class BurgerMenu extends Component {
                      <gastro-button
                         classname="burger__button-close action-button close-burger"
                         src="header/burger-close.svg"
-                        evttype="${EVENTS.closeMenu}"
+                        evttype="${APP_EVENTS.closeMenu}"
                      >
                      </gastro-button>
                      <gastro-language classname="burger">

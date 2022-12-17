@@ -1,6 +1,6 @@
 import { Component } from "../../../core";
 import '../../organisms/Sections'
-import { EVENTS } from "../../../constants";
+import { APP_EVENTS } from "../../../constants";
 
 export class BlogPage extends Component {
     constructor() {

@@ -1,6 +1,6 @@
 import { Component } from "../../../core";
 import './DietModeButton.scss';
-import { EVENTS } from "../../../constants";
+import { APP_EVENTS } from "../../../constants";
 
 export class DietModeButton extends Component {
   constructor() {
@@ -12,7 +12,7 @@ export class DietModeButton extends Component {
   }
 
   onClick() {
-    this.dispatch(EVENTS.switchMode, {
+    this.dispatch(APP_EVENTS.switchMode, {
       mode: this.props.mode,
       clickedModeIndex: +this.props.index,
     })

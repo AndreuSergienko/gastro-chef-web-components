@@ -1,6 +1,6 @@
 import * as core from './core';
 import './components';
-import { EVENTS, APP_ROUTES } from './constants';
+import { APP_EVENTS, APP_ROUTES } from './constants';
 
 export class App extends core.Component {
 	constructor() {
@@ -92,8 +92,8 @@ export class App extends core.Component {
 	}
 
 	componentDidMount() {
-		this.addEventListener(EVENTS.openMenu, this.onOpenMenu);
-		this.addEventListener(EVENTS.closeMenu, this.onCloseMenu);
+		this.addEventListener(APP_EVENTS.openMenu, this.onOpenMenu);
+		this.addEventListener(APP_EVENTS.closeMenu, this.onCloseMenu);
 		this.addEventListener('click', this.onOverlay);
 	}
 

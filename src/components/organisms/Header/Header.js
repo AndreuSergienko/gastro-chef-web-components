@@ -2,7 +2,7 @@ import './Header.scss';
 import * as core from '../../../core';
 import '../../atoms';
 import '../../molecules';
-import { EVENTS, APP_ROUTES } from '../../../constants';
+import { APP_EVENTS, APP_ROUTES } from '../../../constants';
 
 export class Header extends core.Component {
    constructor() {
@@ -35,7 +35,7 @@ export class Header extends core.Component {
 
    onClick(evt) {
       if (evt.target.closest('.burger-button')) {
-         this.dispatch(EVENTS.openMenu)
+         this.dispatch(APP_EVENTS.openMenu)
       }
    }
 
@@ -69,7 +69,7 @@ export class Header extends core.Component {
                   <gastro-button 
                      classname="header__burger-button action-button burger-button" 
                      src="header/burger.svg"
-                     evttype="${EVENTS.openMenu}"
+                     evttype="${APP_EVENTS.openMenu}"
                   >
                   </gastro-button>
                </div>
