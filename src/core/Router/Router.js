@@ -1,3 +1,5 @@
+import { APP_EVENTS } from '../../constants';
+import { eventBus } from '../EventBus';
 import { matchRoute } from './utils'
 
 export class Router extends HTMLElement {
@@ -60,12 +62,11 @@ export class Router extends HTMLElement {
     connectedCallback() {
         this.navigate(window.location.pathname);
         this.addEventListener('popstate', this.onPopState);
-        window.addEventListener('change-route', this.onChangeRoute)
+        eventBus.on(APP_EVENTS.changeRoute, this.onChangeRoute)
     }
 
     disconnectedCallback() {
         this.removeEventListener('popstate', this.onPopState);
-        window.removeEventListener('change-route', this.onChangeRoute)
     }
 
 }
