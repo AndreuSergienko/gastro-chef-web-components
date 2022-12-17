@@ -18,12 +18,10 @@
 		}
 
 		&-img {
+			flex: 0 1 200px;
 			border-radius: 32px;
 			overflow: hidden;
 			box-shadow: 0 0 10px -1px rgb(86 86 86 / 50%);
-			img {
-				width: 100%;
-			}
 		}
 
 		&-title {

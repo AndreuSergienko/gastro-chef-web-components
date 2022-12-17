@@ -14,16 +14,16 @@ export class ArticleCard extends core.Component {
         const { poster, title, date } = JSON.parse(this.props.article)
         return `
         <div class="articles__item">
-            <div class="articles__item-img">
-            <img
-                src="../../../../assets/images/articles/${poster}" alt="article">
+            <div
+                style="background: url(${poster}) no-repeat center / cover" 
+                class="articles__item-img">
             </div>
             <h4 class="articles__item-title">
                 ${title}
             </h4>
             <div class="articles__item-footer">
             <span class="articles__item-date">
-                ${date}
+                18.12.2022
             </span>
             <gastro-nav-link
                 classname="articles__item-link"
