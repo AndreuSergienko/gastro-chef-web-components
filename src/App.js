@@ -1,6 +1,7 @@
 import * as core from './core';
 import './components';
 import { APP_EVENTS, APP_ROUTES } from './constants';
+import { eventBus } from './core';
 
 export class App extends core.Component {
 	constructor() {
@@ -9,6 +10,8 @@ export class App extends core.Component {
 			overlayOn: false,
 			isMenuOpen: false,
 			isMenuClosed: false,
+			isAsideHidden: false,
+			isLoading: false,
 			asideItems: [
 				{
 					href: '#',
@@ -91,10 +94,34 @@ export class App extends core.Component {
 		}
 	}
 
+	setAsideVisibility = (currPath) => {
+		this.setState((state) => {
+			return {
+				...state,
+				isAsideHidden:
+					currPath === APP_ROUTES.adminPage ||
+					currPath === APP_ROUTES.blogPage
+			}
+		})
+	}
+
+	onAsideToggle = () => {
+		this.setAsideVisibility(window.location.pathname)
+	}
+
 	componentDidMount() {
+		this.onAsideToggle()
 		this.addEventListener(APP_EVENTS.openMenu, this.onOpenMenu);
 		this.addEventListener(APP_EVENTS.closeMenu, this.onCloseMenu);
 		this.addEventListener('click', this.onOverlay);
+		eventBus.on(APP_EVENTS.changeRoute, this.onAsideToggle)
+	}
+
+	componentWillUnmount() {
+		this.removeEventListener(APP_EVENTS.openMenu, this.onOpenMenu);
+		this.removeEventListener(APP_EVENTS.closeMenu, this.onCloseMenu);
+		this.removeEventListener('click', this.onOverlay);
+		eventBus.off(APP_EVENTS.changeRoute, this.onAsideToggle)
 	}
 
 	render() {
@@ -109,6 +136,7 @@ export class App extends core.Component {
 			</gastro-burger-menu>
 			<gastro-aside
 				items='${JSON.stringify(this.state.asideItems)}'
+				is-aside-hidden="${this.state.isAsideHidden}"
 			>
 			</gastro-aside>			
 			<main class="main">
@@ -116,6 +144,12 @@ export class App extends core.Component {
 					path="${APP_ROUTES.homePage}"
 					component="gastro-home-page"
 					title="Home Page"
+				>
+				</gastro-route>
+				<gastro-route
+					path="${APP_ROUTES.adminPage}"
+					component="gastro-admin-page"
+					title="Admin Page"
 				>
 				</gastro-route>
 				<gastro-route 
@@ -127,7 +161,7 @@ export class App extends core.Component {
 				<gastro-route 
 					path="${APP_ROUTES.blogPage}/details" 
 					component="gastro-blog-details-page"
-					title=" Page"
+					title="Blog Details Page"
 				>
 				</gastro-route>
 				<gastro-route 
