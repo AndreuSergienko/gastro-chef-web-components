@@ -93,10 +93,11 @@ gastro-aside {
 			outline: 1px solid #f5faff;
 			&:hover {
 				outline: 1px solid yellow !important;
+				color: inherit;
 				transform: scale(1.1);
 			}
 
-			@media (max-width: 1300px) {
+			@media (max-width: 1600px) {
 				width: 60px;
 				height: 60px;
 				padding: 10px;
