@@ -16,4 +16,4 @@ class Cloud {
     }
 }
 
-export const CloudService = new Cloud()
+export const cloudService = new Cloud()
