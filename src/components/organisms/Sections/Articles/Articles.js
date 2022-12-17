@@ -1,6 +1,6 @@
 import './Articles.scss'
 import * as core from '../../../../core'
-import '../../../molecules/Article'
+import '../../../molecules/ArticleCard'
 
 export class Articles extends core.Component {
     constructor() {
@@ -17,10 +17,10 @@ export class Articles extends core.Component {
             <div class="container">
                 <div class="articles-container">
                 ${JSON.parse(this.props.items).map((item) => (`
-                    <gastro-articles-item
+                    <gastro-article-card
                         article='${JSON.stringify(item)}'
                     >
-                    </gastro-articles-item>
+                    </gastro-article-card>
                 `)).join('')}
                 </div>
             </div>
