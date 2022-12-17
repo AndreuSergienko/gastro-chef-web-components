@@ -1,4 +1,5 @@
 export const APP_EVENTS = {
+   changeRoute: 'change-route',
    openMenu: 'open-menu',
    closeMenu: 'close-menu',
    switchMode: 'switch-mode',
