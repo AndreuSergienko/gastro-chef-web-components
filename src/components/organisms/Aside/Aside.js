@@ -1,9 +1,10 @@
 import './Aside.scss'
-import { Component } from '../../../core'
+import { Component, eventBus } from '../../../core'
+import { APP_EVENTS, APP_ROUTES } from '../../../constants';
 
 export default class Aside extends Component {
    constructor() {
-      super()
+      super();
    }
 
    static get observedAttributes() {

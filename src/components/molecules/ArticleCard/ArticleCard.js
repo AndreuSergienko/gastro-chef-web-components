@@ -1,5 +1,6 @@
 import './ArticleCard.scss'
 import * as core from '../../../core';
+import { APP_ROUTES } from '../../../constants';
 
 export class ArticleCard extends core.Component {
     constructor() {
@@ -11,21 +12,21 @@ export class ArticleCard extends core.Component {
     }
 
     render() {
-        const { poster, title, date } = JSON.parse(this.props.article)
+        const { poster, title, date, id } = JSON.parse(this.props.article)
         return `
         <div class="articles__item">
-            <div
-                style="background: url(${poster}) no-repeat center / cover" 
-                class="articles__item-img">
+            <div class="articles__item-img">
+                <img src="${poster}" alt="${title}"/>
             </div>
             <h4 class="articles__item-title">
                 ${title}
             </h4>
             <div class="articles__item-footer">
             <span class="articles__item-date">
-                18.12.2022
+                ${date}
             </span>
             <gastro-nav-link
+                to="${APP_ROUTES.blogPage}/${id}"
                 classname="articles__item-link"
             >
                 <div class="articles__item-more">

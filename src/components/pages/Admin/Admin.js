@@ -1,4 +1,5 @@
 import './AdminPanel.scss';
+import moment from 'moment';
 import { Component, FormManager } from "../../../core";
 import { storageService, articleService } from "../../../services";
 import '../../atoms/Preloader';
@@ -43,6 +44,10 @@ export class AdminPage extends Component {
       });
    }
 
+   generateDate = () => {
+      return moment().format('D.MM.YYYY')
+   }
+
    componentDidMount() {
       this.addEventListener("submit", this.form.handleSubmit(this.createArticle));
    }
@@ -66,6 +71,16 @@ export class AdminPage extends Component {
                         </div>
 
                         <div class="mb-3">
+                           <label class="form-label">Дата</label>
+                           <input
+                              class="form-control"
+                              type="text" 
+                              name="date"
+                              value=${this.generateDate()}
+                           >
+                        </div>
+
+                        <div class="mb-3">
                            <label
                               for="exampleFormControlTextarea1" 
                               class="form-label"
@@ -76,9 +91,7 @@ export class AdminPage extends Component {
                               name="description" 
                               class="form-control"
                               id="exampleFormControlTextarea1"
-                              rows="3"
-                           >
-                           </textarea>
+                           ></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">
                            Send

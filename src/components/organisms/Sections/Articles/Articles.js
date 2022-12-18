@@ -22,7 +22,7 @@ export class Articles extends core.Component {
                         article='${JSON.stringify(item)}'
                     >
                     </gastro-article-card>`)).join('')}
-                    ` : '<h1>No Articles Found</h1>'}
+                    ` : '<h1 style="font-weight: 500;font-size: 30px;">No Articles Found</h1>'}
                 </div>
             </div>
             <div class="articles__circle-bg"></div>
