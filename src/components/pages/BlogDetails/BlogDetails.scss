@@ -1,11 +1,24 @@
 @import '../../../scss/theme/colors.scss';
 
 .blog-details {
-	min-height: 800px;
+	min-height: 600px;
+	@media (max-width: 1200px) {
+		min-height: 500px;
+	}
+	@media (max-width: 992px) {
+		min-height: 450px;
+	}
+	@media (max-width: 768px) {
+		min-height: 400px;
+	}
+	@media (max-width: 610px) {
+		min-height: 400px;
+	}
+
 	&-container {
 		display: flex;
 		justify-content: center;
-		padding: 250px 100px 50px;
+		padding: 270px 100px 50px;
 		@media (max-width: 1200px) {
 			padding-top: 220px;
 		}
@@ -22,9 +35,10 @@
 	}
 
 	&__wrapper {
+		width: 100%;
 		display: flex;
 		box-shadow: 0 0 20px #ccc;
-		border-radius: 60px;
+		border-radius: 50px 25px 50px 25px;
 		border: 1px solid $primary-color;
 		padding: 29px;
 		background-color: aqua;
@@ -80,10 +94,10 @@
 		font-size: 17px;
 		letter-spacing: 0.025em;
 		color: #3dae27;
-		@media (max-width: 768px) {
-			font-size: 15px;
+		@media (max-width: 992px) {
+			font-size: 16px;
 		}
-		@media (max-width: 576px) {
+		@media (max-width: 768px) {
 			font-size: 14px;
 		}
 	}
