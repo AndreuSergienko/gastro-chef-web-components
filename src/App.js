@@ -94,34 +94,34 @@ export class App extends core.Component {
 		}
 	}
 
-	setAsideVisibility = (currPath) => {
+	setAsideVisibility = (evt) => {
+		const currPath = evt?.detail?.target || window.location.pathname
+
 		this.setState((state) => {
 			return {
 				...state,
 				isAsideHidden:
 					currPath === APP_ROUTES.adminPage ||
-					currPath === APP_ROUTES.blogPage
+					currPath === APP_ROUTES.blogPage ||
+					currPath.length > 20
+
 			}
 		})
 	}
 
-	onAsideToggle = () => {
-		this.setAsideVisibility(window.location.pathname)
-	}
-
 	componentDidMount() {
-		this.onAsideToggle()
+		this.setAsideVisibility()
 		this.addEventListener(APP_EVENTS.openMenu, this.onOpenMenu);
 		this.addEventListener(APP_EVENTS.closeMenu, this.onCloseMenu);
 		this.addEventListener('click', this.onOverlay);
-		eventBus.on(APP_EVENTS.changeRoute, this.onAsideToggle)
+		eventBus.on(APP_EVENTS.changeRoute, this.setAsideVisibility)
 	}
 
 	componentWillUnmount() {
 		this.removeEventListener(APP_EVENTS.openMenu, this.onOpenMenu);
 		this.removeEventListener(APP_EVENTS.closeMenu, this.onCloseMenu);
 		this.removeEventListener('click', this.onOverlay);
-		eventBus.off(APP_EVENTS.changeRoute, this.onAsideToggle)
+		eventBus.off(APP_EVENTS.changeRoute, this.setAsideVisibility)
 	}
 
 	render() {
@@ -159,7 +159,7 @@ export class App extends core.Component {
 				>
 				</gastro-route>
 				<gastro-route 
-					path="${APP_ROUTES.blogPage}/details" 
+					path="${APP_ROUTES.blogPage}/:id" 
 					component="gastro-blog-details-page"
 					title="Blog Details Page"
 				>
