@@ -7,7 +7,7 @@ export class Navigation extends core.Component {
    }
 
    static get observedAttributes() {
-      return ['items', 'classname', 'active-link-path']
+      return ['items', 'classname', 'active-link-path', 'is-user-logged']
    }
 
    render() {
@@ -19,10 +19,10 @@ export class Navigation extends core.Component {
                `
                <li class="${this.props.classname}__list-item">
                   <gastro-nav-link
-                     to="${item.to}"
+                     to="${item.to ?? ''}"
                   >
                      <span 
-                        class="${this.props.classname}__list-link ${this.props['active-link-path'] === item.to ? 'active' : ''}"
+                        class="${this.props.classname}__list-link ${this.props['active-link-path'] === item.to ? 'active' : ''} ${item.signOutModifier ?? ''}"
                      >
                         ${item.label}
                      </span>
