@@ -7,19 +7,6 @@
 @import './scss/theme/typography.scss';
 @import './scss/theme/breakpoints.scss';
 
-@keyframes for-overlay {
-	0% {
-		opacity: 0;
-		visibility: hidden;
-		top: -100%;
-	}
-	100% {
-		opacity: 1;
-		visibility: visible;
-		top: 0;
-	}
-}
-
 * {
 	-webkit-tap-highlight-color: transparent;
 	-webkit-touch-callout: none;
@@ -70,23 +57,4 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 20px;
-}
-
-.overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	background: rgba(2, 2, 2, 0.85);
-	z-index: 100;
-	opacity: 0;
-	visibility: hidden;
-
-	&.overlay-on {
-		animation: for-overlay 0.5s ease 0s;
-		opacity: 1;
-		visibility: visible;
-	}
 }
