@@ -17,7 +17,20 @@ export class Input extends Component {
             "is-touched",
             "error-message",
             "placeholder",
+            "parent-class",
         ];
+    }
+
+    addClass() {
+        if (this.props['parent-class']) {
+            this.classList.add(this.props['parent-class'])
+            return
+        }
+        return
+    }
+
+    componentDidMount() {
+        this.addClass()
     }
 
     render() {
@@ -26,12 +39,10 @@ export class Input extends Component {
 
         return `
             <label
-                class="${this.props['class-name']}-label ${isAddClassName}"
-            >
-                ${this.props.label}
-            </label>
+                class="${this.props['class-name'] ?? 'form'}-label ${isAddClassName}"
+            >${this.props.label}</label>
             <input
-                class="${isAddClassName} ${this.props['class-name'] ?? ''}-input"
+                class="${isAddClassName} ${this.props['class-name'] ?? 'form'}-input"
                 type="${this.props.type}"
                 name="${this.props['control-name']}"
                 value="${this.props.value}"
