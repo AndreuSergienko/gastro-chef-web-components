@@ -25,6 +25,18 @@ export class Validator {
     };
   }
 
+  static password(message) {
+    return (value) => {
+      if (value.length < 7) {
+        return {
+          message,
+        };
+      }
+
+      return {};
+    };
+  }
+
   static required(message) {
     return (value) => {
       if (value === '') {
