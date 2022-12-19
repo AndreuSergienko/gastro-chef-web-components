@@ -7,7 +7,19 @@ export class Button extends Component {
 	}
 
 	static get observedAttributes() {
-		return ['type', 'src', 'content', 'classname', 'evttype'];
+		return ['type', 'src', 'content', 'classname', 'evttype', 'parent-class'];
+	}
+
+	addClass() {
+		if (this.props['parent-class']) {
+			this.classList.add(this.props['parent-class'])
+			return;
+		}
+		return;
+	}
+
+	componentDidMount() {
+		this.addClass()
 	}
 
 	render() {
