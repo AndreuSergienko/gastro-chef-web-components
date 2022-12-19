@@ -1,15 +1,22 @@
 import './Footer.scss'
-import { Component } from '../../../core';
-import '../../molecules/Navigation'
-import '../../atoms/Logo'
-import '../../molecules/Socials'
-import { APP_ROUTES } from '../../../constants'
+import { Component, eventBus } from '../../../core';
+import '../../atoms'
+import '../../molecules'
+import { APP_ROUTES, APP_EVENTS } from '../../../constants'
 
 export class Footer extends Component {
     constructor() {
         super();
         this.state = {
-            navItems: [
+            navItemsWithoutUser: [
+                {
+                    to: `${APP_ROUTES.blogPage}`,
+                    label: 'Блог',
+                },
+                {
+                    to: `${APP_ROUTES.aboutPage}`,
+                    label: 'О нас',
+                },
                 {
                     to: `${APP_ROUTES.signInPage}`,
                     label: 'Войти',
@@ -22,13 +29,23 @@ export class Footer extends Component {
                     to: `${APP_ROUTES.adminPage}`,
                     label: 'Админ',
                 },
+            ],
+            navItemsWithUser: [
+                {
+                    to: `${APP_ROUTES.blogPage}`,
+                    label: 'Блог',
+                },
                 {
                     to: `${APP_ROUTES.aboutPage}`,
                     label: 'О нас',
                 },
                 {
-                    to: `${APP_ROUTES.blogPage}`,
-                    label: 'Блог',
+                    to: `${APP_ROUTES.adminPage}`,
+                    label: 'Админ',
+                },
+                {
+                    signOutModifier: 'sign-out-link',
+                    label: 'Выйти',
                 },
             ],
             activeLinkPath: window.location.pathname,
@@ -65,6 +82,25 @@ export class Footer extends Component {
         };
     }
 
+    static get observedAttributes() {
+        return ['is-user-logged']
+    }
+
+    onClick(evt) {
+        evt.preventDefault();
+        if (evt.target.closest('.sign-out-link')) {
+            eventBus.emit(APP_EVENTS.userLoggedOut)
+        }
+    }
+
+    componentDidMount() {
+        this.addEventListener('click', this.onClick);
+    }
+
+    componentWillUnmount() {
+        this.removeEventListener('click', this.onClick)
+    }
+
     render() {
         return `
         <footer class="footer">
@@ -72,7 +108,9 @@ export class Footer extends Component {
 			<div class="container">
 				<div class="footer-container">
 					<gastro-navigation
-                        items='${JSON.stringify(this.state.navItems)}'
+                        items='${JSON.parse(this.props['is-user-logged']) ?
+                JSON.stringify(this.state.navItemsWithUser) :
+                JSON.stringify(this.state.navItemsWithoutUser)}'
                         classname="footer"
                         active-link-path="${this.state.activeLinkPath}"
                     >
