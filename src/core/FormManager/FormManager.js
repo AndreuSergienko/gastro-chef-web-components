@@ -1,3 +1,6 @@
+import { APP_EVENTS } from "../../constants";
+import { eventBus } from "../EventBus";
+
 export class FormManager {
   constructor() {
     this.ref = null;
@@ -18,9 +21,7 @@ export class FormManager {
   };
 
   dispatch(target, data) {
-    target.dispatchEvent(
-      new CustomEvent('validate-controls', { bubbles: true, detail: data })
-    );
+    eventBus.emit(APP_EVENTS.validateControls, data)
   }
 
   validate = (key) => {
