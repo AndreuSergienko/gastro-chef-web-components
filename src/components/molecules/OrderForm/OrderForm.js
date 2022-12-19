@@ -1,9 +1,9 @@
 import { Component } from "../../../core";
-import './Form.scss';
+import './OrderForm.scss';
 import '../../atoms/Input'
 import '../../atoms/Button';
 
-export class Form extends Component {
+export class OrderForm extends Component {
     constructor() {
         super()
     }
@@ -15,6 +15,7 @@ export class Form extends Component {
     render() {
         const fields = JSON.parse(this.props.fields)
         const { username, usertel } = fields
+
 
         return `
         <form 
@@ -31,9 +32,8 @@ export class Form extends Component {
                     error-message="${username.errors?.message}"
                     class-name="assistance__order-form"
                     placeholder="Введите ваше имя"
-                >
+                ></gastro-input>
             </div>
-            </gastro-input>
             <div class="${this.props['class-name'] ?? ''}-field">
                 <gastro-input
                     type="tel"
@@ -45,8 +45,7 @@ export class Form extends Component {
                     error-message="${usertel.errors?.message}"
                     class-name="assistance__order-form"
                     placeholder="Введите ваш номер"
-                >
-                </gastro-input>
+                ></gastro-input>
             </div>
 
             <div class="assistance__order-form-terms">
@@ -88,4 +87,4 @@ export class Form extends Component {
     }
 }
 
-customElements.define('gastro-form', Form)
+customElements.define('gastro-order-form', OrderForm)
