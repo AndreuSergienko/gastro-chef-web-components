@@ -29,50 +29,6 @@
 		}
 	}
 
-	&__list {
-		display: flex;
-		flex-direction: column;
-		gap: 17px;
-		@media (max-width: 992px) {
-			gap: 15px;
-		}
-		@media (max-width: 768px) {
-			gap: 10px;
-		}
-		@media (max-width: 635px) {
-			display: none !important;
-		}
-
-		&-item {
-		}
-
-		&-link {
-			font-family: 'Comfortaa';
-			font-style: normal;
-			font-weight: 700;
-			font-size: 20px;
-			line-height: 22px;
-			color: #020202;
-			transition: 0.2s;
-
-			&:hover {
-				color: $primary-color;
-			}
-			&:active {
-				color: #3d9646;
-			}
-
-			@media (max-width: 992px) {
-				font-size: 17px;
-				line-height: 19px;
-			}
-			@media (max-width: 768px) {
-				font-size: 14px;
-				line-height: 16px;
-			}
-		}
-	}
-
 	&__logo {
 		display: flex;
 		flex-direction: column;

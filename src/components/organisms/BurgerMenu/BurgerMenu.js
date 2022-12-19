@@ -2,7 +2,7 @@ import './BurgerMenu.scss'
 import { Component } from '../../../core'
 import '../../atoms'
 import '../../molecules'
-import { APP_EVENTS } from '../../../constants'
+import { APP_EVENTS, APP_ROUTES } from '../../../constants'
 
 export class BurgerMenu extends Component {
    constructor() {
@@ -10,26 +10,27 @@ export class BurgerMenu extends Component {
       this.state = {
          navItems: [
             {
-               href: '#',
-               label: 'Программы питания',
+               to: `${APP_ROUTES.signInPage}`,
+               label: 'Войти',
             },
             {
-               href: '#',
-               label: 'Бизнес-ланчи',
+               to: `${APP_ROUTES.signUpPage}`,
+               label: 'Регистрация',
             },
             {
-               href: '#',
-               label: 'Gastro Shop',
+               to: `${APP_ROUTES.adminPage}`,
+               label: 'Админ',
             },
             {
-               href: '#',
+               to: `${APP_ROUTES.aboutPage}`,
                label: 'О нас',
             },
             {
-               href: '#',
+               to: `${APP_ROUTES.blogPage}`,
                label: 'Блог',
             },
-         ]
+         ],
+         activeLinkPath: window.location.pathname,
       }
    }
 
@@ -56,7 +57,9 @@ export class BurgerMenu extends Component {
                <div class="burger__top">
                   <gastro-navigation 
                      items='${JSON.stringify(this.state.navItems)}'
-                     classname="burger">
+                     classname="burger"
+                     active-link-path="${this.state.activeLinkPath}"
+                     >
                   </gastro-navigation>
                   <div class="burger__controls">
                      <gastro-button

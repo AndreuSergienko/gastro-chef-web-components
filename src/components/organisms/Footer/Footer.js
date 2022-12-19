@@ -11,16 +11,16 @@ export class Footer extends Component {
         this.state = {
             navItems: [
                 {
-                    to: `${APP_ROUTES.homePage}`,
-                    label: 'Главная',
+                    to: `${APP_ROUTES.signInPage}`,
+                    label: 'Войти',
                 },
                 {
-                    to: '/',
-                    label: 'Программы питания',
+                    to: `${APP_ROUTES.signUpPage}`,
+                    label: 'Регистрация',
                 },
                 {
-                    to: '/',
-                    label: 'Gastro Shop',
+                    to: `${APP_ROUTES.adminPage}`,
+                    label: 'Админ',
                 },
                 {
                     to: `${APP_ROUTES.aboutPage}`,
@@ -31,6 +31,7 @@ export class Footer extends Component {
                     label: 'Блог',
                 },
             ],
+            activeLinkPath: window.location.pathname,
             socialsItems: [
                 {
                     href: 'https://instagram.com',
@@ -73,6 +74,7 @@ export class Footer extends Component {
 					<gastro-navigation
                         items='${JSON.stringify(this.state.navItems)}'
                         classname="footer"
+                        active-link-path="${this.state.activeLinkPath}"
                     >
                     </gastro-navigation>
                     <gastro-nav-link to="${APP_ROUTES.homePage}">
