@@ -1,9 +1,10 @@
 export const APP_EVENTS = {
+   validateControls: 'validate-controls',
    changeRoute: 'change-route',
-   openMenu: 'open-menu',
-   closeMenu: 'close-menu',
+   toggleMenu: 'toggle-menu',
    switchMode: 'switch-mode',
-   addModificator: 'add-modificator',
+   userLoggedIn: 'user-logged-in',
+   userLoggedOut: 'user-logged-out',
 }
 
 export const APP_ROUTES = {
