@@ -1,8 +1,8 @@
 import './AssistanceOrder.scss'
-import { Component } from '../../../core'
-import { FormManager, Validator } from '../../../core';
+import { Component, eventBus, FormManager, Validator } from '../../../core';
 import { initialFieldsState } from './initialState'
-import '../../molecules/Form'
+import '../OrderForm'
+import { APP_EVENTS } from '../../../constants';
 
 export class AssistanceOrder extends Component {
     constructor() {
@@ -46,7 +46,7 @@ export class AssistanceOrder extends Component {
 
     componentDidMount() {
         this.addEventListener("click", this.validateForm);
-        this.addEventListener('validate-controls', this.validate);
+        eventBus.on(APP_EVENTS.validateControls, this.validate);
         this.addEventListener("submit", this.form.handleSubmit(this.registerUser));
     }
 
@@ -59,12 +59,12 @@ export class AssistanceOrder extends Component {
                 Обсудите все детали заказа по телефону или сами укажите все
                 подробности онлайн
             </p>
-            <gastro-form
+            <gastro-order-form
                 fields='${JSON.stringify(this.state.fields)}'
                 class-name="assistance__order-form"
                 id="order-form"
             >
-            </gastro-form>
+            </gastro-order-form>
         </div>
         `
     }
