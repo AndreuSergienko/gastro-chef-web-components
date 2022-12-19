@@ -14,7 +14,9 @@ export class Link extends Component {
 
     onClick = (evt) => {
         evt.preventDefault();
-        eventBus.emit(APP_EVENTS.changeRoute, { target: this.props.to })
+        if (this.props.to) {
+            eventBus.emit(APP_EVENTS.changeRoute, { target: this.props.to })
+        }
     }
 
     componentDidMount() {
