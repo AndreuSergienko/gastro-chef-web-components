@@ -95,7 +95,6 @@ export class App extends Component {
 			isMenuOpen: !state.isMenuOpen,
 			isOverlayOpen: !state.isOverlayOpen,
 		}));
-		console.log(this.state);
 	}
 
 	// onOverlay(e) {

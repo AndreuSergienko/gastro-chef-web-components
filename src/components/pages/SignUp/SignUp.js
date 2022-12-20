@@ -45,7 +45,7 @@ export class SignUpPage extends Component {
                 this.setState((state) => {
                     return {
                         ...state,
-                        error: error.message,
+                        error: error,
                     };
                 });
             })
@@ -70,7 +70,6 @@ export class SignUpPage extends Component {
     };
 
     validate = (evt) => {
-        console.log(evt.detail);
         this.setState((state) => {
             return {
                 ...state,

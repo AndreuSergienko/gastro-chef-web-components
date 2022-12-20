@@ -41,7 +41,14 @@ export class SignInPage extends Component {
                 );
                 eventBus.emit(APP_EVENTS.userLoggedIn, { user });
             })
-            .catch((err) => console.log(err))
+            .catch((error) => {
+                this.setState((state) => {
+                    return {
+                        ...state,
+                        error: error
+                    }
+                })
+            })
             .finally(() => this.toggleIsLoading())
     };
 
@@ -61,7 +68,6 @@ export class SignInPage extends Component {
     };
 
     validate = (evt) => {
-        console.log(evt.detail);
         this.setState((state) => {
             return {
                 ...state,

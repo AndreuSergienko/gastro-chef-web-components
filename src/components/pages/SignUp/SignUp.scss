@@ -15,6 +15,19 @@
 	&__main {
 		min-height: 650px;
 		padding-top: 250px;
+		@media (max-width: 992px) {
+			padding-top: 200px;
+			min-height: 580px;
+		}
+		@media (max-width: 700px) {
+			padding-top: 165px;
+			padding-bottom: 60px;
+			min-height: auto;
+		}
+		@media (max-width: 576px) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
 	}
 
 	&__box {
@@ -23,12 +36,21 @@
 		box-shadow: 0 0 20px #ccc;
 		border-radius: 20px;
 		padding: 20px 20px 30px 20px;
+		@media (max-width: 992px) {
+			max-width: 500px;
+		}
 	}
 
 	&__title {
 		font-size: 25px;
 		font-weight: 500;
 		text-align: center;
+		@media (max-width: 992px) {
+			font-size: 21px;
+		}
+		@media (max-width: 700px) {
+			font-size: 19px;
+		}
 	}
 
 	&__form {
@@ -42,6 +64,9 @@
 			flex-direction: column;
 			align-items: flex-start;
 			gap: 10px;
+			@media (max-width: 700px) {
+				gap: 5px;
+			}
 		}
 
 		&-label {
@@ -54,6 +79,11 @@
 			padding: 10px 20px;
 			border-radius: 20px;
 			transition: 0.3s;
+			font-size: 16px;
+			@media (max-width: 700px) {
+				padding: 7px 15px;
+				font-size: 15px;
+			}
 			&:hover {
 				box-shadow: 0 0 5px #ccc;
 			}
@@ -73,16 +103,24 @@
 			background: #f5faff;
 			border: 2px solid #f5aaff;
 			border-radius: 20px;
-			padding: 5px 0;
+			padding: 5px 0px;
 			width: 100%;
+			color: #000;
 			font-size: 18px;
 			font-weight: 500;
 			transition: 0.2s;
 			box-shadow: 3px 3px 0px #ccc;
+			@media (min-width: 1200px) {
+				&:hover {
+					animation: sign-up-jump 0.4s infinite linear alternate;
+				}
+			}
+			@media (max-width:576px) {
+				font-size: 16px;
+			}
 			&:hover {
 				background: #f5aaff;
 				color: #f5faff;
-				animation: sign-up-jump 0.4s infinite linear alternate;
 			}
 			&:active {
 				animation: none;
@@ -95,4 +133,7 @@
 
 .invalid-feedback {
 	font-weight: 500;
+	@media (max-width: 576px) {
+		font-size: 13px;
+	}
 }
