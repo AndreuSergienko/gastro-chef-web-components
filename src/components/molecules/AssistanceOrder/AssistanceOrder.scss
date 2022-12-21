@@ -1,14 +1,14 @@
 @import '../../../scss/theme/colors.scss';
 
-gastro-assistance-order {
-	flex: 0 0 430px;
-	@media (max-width: 992px) {
-		flex: initial;
-		max-width: 430px;
-	}
-}
-
 .assistance {
+	&__order-wrapper {
+		flex: 0 0 430px;
+		@media (max-width: 992px) {
+			flex: initial;
+			max-width: 430px;
+		}
+	}
+
 	&__order {
 		&-title {
 			font-family: 'Comfortaa';
