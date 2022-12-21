@@ -1,3 +1,4 @@
+import { APP_EVENTS } from "../../../constants";
 import { Component } from "../../../core";
 
 export class Overlay extends Component {
@@ -12,14 +13,25 @@ export class Overlay extends Component {
 
     addClass() {
         if (JSON.parse(this.props["is-open"])) {
-            this.classList.add('overlay')
+            this.classList.add('overlay-parent')
         } else {
-            this.classList.remove('overlay')
+            this.classList.remove('overlay-parent')
         }
+    }
+
+    onClick(evt) {
+        if (evt.target.closest('.overlay-parent')) {
+            if (evt.target.closest('.burger__menu')) {
+                return;
+            }
+            this.dispatch(APP_EVENTS.toggleMenu)
+        }
+
     }
 
     componentDidMount() {
         this.addClass()
+        this.addEventListener('click', this.onClick)
     }
 
     render() {
