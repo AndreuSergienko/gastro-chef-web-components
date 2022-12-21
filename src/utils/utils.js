@@ -1,9 +1,11 @@
-let paramRe = /^:(.+)/;
-function segmentize(uri) {
-  return uri.replace(/(^\/+|\/+$)/g, "").split("/");
-}
+import { APP_ROUTES } from '../constants'
 
 export function matchRoute(routes, uri) {
+  let paramRe = /^:(.+)/;
+  function segmentize(uri) {
+    return uri.replace(/(^\/+|\/+$)/g, "").split("/");
+  }
+
   let match;
   const [uriPathname] = uri.split("?");
   const uriSegments = segmentize(uriPathname);
@@ -49,6 +51,21 @@ export function matchRoute(routes, uri) {
   return match || null;
 }
 
-export const toggleIsLoading = () => {
+export const togglePreloader = (context) => {
+  return context.setState((state) => {
+    return {
+      ...state,
+      isLoading: !state.isLoading,
+    }
+  })
+}
 
+export const checkPath = (windowPath) => {
+  const routes = [APP_ROUTES.adminPage, APP_ROUTES.errorPage, APP_ROUTES.blogPage, APP_ROUTES.signInPage, APP_ROUTES.signUpPage]
+
+  return routes.find((route) => route === windowPath) || windowPath.length > 20
+}
+
+export const setParentClass = (context) => {
+  return context.props['parent-class'] && context.classList.add(context.props['parent-class'])
 }
