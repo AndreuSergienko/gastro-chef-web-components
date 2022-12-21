@@ -53,7 +53,6 @@ export class Diet extends Component {
       ...state,
       activeModeIndex: detail.clickedModeIndex,
       outletMode: {
-        ...state.outletMode,
         ...detail.mode,
         isActive: true,
       },
@@ -70,9 +69,14 @@ export class Diet extends Component {
     <div class="container">
       <div class="diet-container">
         <div class="diet__tabs-btns">
-          <gastro-button classname="diet__tabs-btn" content="Программы питания">
+          <gastro-button 
+            parent-class="diet__tabs-tab"
+            classname="diet__tabs-btn" 
+            content="Программы питания"
+          >
           </gastro-button>
           <gastro-button
+            parent-class="diet__tabs-tab"
             classname="diet__tabs-btn"
             content="Специальные программы"
           >
@@ -83,6 +87,7 @@ export class Diet extends Component {
           <div class="diet__modes-btns">
           ${this.state.modesData.map((mode, index) => (`
             <gastro-diet-mode-button
+              parent-class='diet__modes-mode'
               mode='${JSON.stringify(mode)}'
               index='${index}'
               isactive='${index === this.state.activeModeIndex ? true : false}'
