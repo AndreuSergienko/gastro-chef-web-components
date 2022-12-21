@@ -72,7 +72,7 @@ export class BurgerMenu extends Component {
    render() {
       return `
          <div
-            class="burger__menu ${JSON.parse(this.props['is-open']) ? 'open' : ''}"
+            class="burger__menu ${JSON.parse(this.props['is-open']) ? 'open' : 'closed'}"
          >
                <div class="burger__top">
                   <gastro-navigation 
