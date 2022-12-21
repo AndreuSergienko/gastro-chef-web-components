@@ -1,5 +1,7 @@
 import { eventBus, Component } from './core';
+import { togglePreloader, checkPath } from './utils'
 import './components';
+import './auth'
 import { APP_EVENTS, APP_ROUTES } from './constants';
 import { authService } from './services';
 
@@ -65,17 +67,8 @@ export class App extends Component {
 		};
 	}
 
-	toggleIsLoading = () => {
-		this.setState((state) => {
-			return {
-				...state,
-				isLoading: !state.isLoading,
-			};
-		});
-	};
-
 	getUser() {
-		this.toggleIsLoading()
+		togglePreloader(this)
 		authService.init()
 			.then((user) => {
 				authService.user = user;
@@ -86,10 +79,10 @@ export class App extends Component {
 					}
 				})
 			})
-			.finally(() => this.toggleIsLoading())
+			.finally(() => togglePreloader(this))
 	}
 
-	onToggleMenu() {
+	onToggleMenu = (evt) => {
 		this.setState((state) => ({
 			...state,
 			isMenuOpen: !state.isMenuOpen,
@@ -97,12 +90,15 @@ export class App extends Component {
 		}));
 	}
 
-	// onOverlay(e) {
-	// 	if (e.target.closest('.overlay')) {
-	// 		console.log('overlay');
-	// 		this.onToggleMenu()
-	// 	}
-	// }
+	onCloseBurger = () => {
+		this.setState((state) => {
+			return {
+				...state,
+				isMenuOpen: false,
+				isOverlayOpen: false,
+			}
+		})
+	}
 
 	setAsideVisibility = (evt) => {
 		const currPath = evt?.detail?.target || window.location.pathname
@@ -110,19 +106,13 @@ export class App extends Component {
 		this.setState((state) => {
 			return {
 				...state,
-				isAsideHidden:
-					currPath === APP_ROUTES.adminPage ||
-					currPath === APP_ROUTES.blogPage ||
-					currPath === APP_ROUTES.signInPage ||
-					currPath === APP_ROUTES.signUpPage ||
-					currPath.length > 20
-
+				isAsideHidden: !!checkPath(currPath)
 			}
 		})
 	}
 
 	onLoggedOut = () => {
-		this.toggleIsLoading();
+		togglePreloader(this)
 		authService.signOut()
 			.then(() => {
 				this.setState((state) => {
@@ -137,7 +127,7 @@ export class App extends Component {
 				)
 			})
 			.catch((err) => console.log(err))
-			.finally(() => this.toggleIsLoading())
+			.finally(() => togglePreloader(this))
 	}
 
 	onLoggedIn = ({ detail }) => {
@@ -153,24 +143,24 @@ export class App extends Component {
 		this.getUser();
 		this.setAsideVisibility();
 		this.addEventListener(APP_EVENTS.toggleMenu, this.onToggleMenu);
-		// this.addEventListener('click', this.onOverlay);
 		eventBus.on(APP_EVENTS.changeRoute, this.setAsideVisibility);
+		eventBus.on(APP_EVENTS.changeRoute, this.onCloseBurger);
 		eventBus.on(APP_EVENTS.userLoggedOut, this.onLoggedOut);
 		eventBus.on(APP_EVENTS.userLoggedIn, this.onLoggedIn);
 	}
 
 	componentWillUnmount() {
 		this.removeEventListener(APP_EVENTS.toggleMenu, this.onToggleMenu);
-		// this.removeEventListener('click', this.onOverlay);
 		eventBus.off(APP_EVENTS.changeRoute, this.setAsideVisibility)
+		eventBus.off(APP_EVENTS.changeRoute, this.onCloseBurger);
 		eventBus.off(APP_EVENTS.userLoggedOut, this.onLoggedOut)
 		eventBus.off(APP_EVENTS.userLoggedIn, this.onLoggedIn);
 	}
 
 	render() {
 		return `
-		<gastro-overlay is-open="${this.state.isOverlayOpen}">
-			<gastro-preloader is-loading="${this.state.isLoading}">
+		<gastro-preloader is-loading="${this.state.isLoading}">
+			<gastro-overlay is-open="${this.state.isOverlayOpen}">
 				<gastro-router>
 					<gastro-header
 						is-user-logged="${this.state.isUserLogged}"
@@ -193,12 +183,12 @@ export class App extends Component {
 							title="Home Page"
 						>
 						</gastro-route>
-						<gastro-route
+						<gastro-private-route
 							path="${APP_ROUTES.adminPage}"
 							component="gastro-admin-page"
 							title="Admin Page"
 						>
-						</gastro-route>
+						</gastro-private-route>
 						<gastro-route
 							path="${APP_ROUTES.signInPage}"
 							component="gastro-sign-in-page"
@@ -246,8 +236,8 @@ export class App extends Component {
 					>
 					</div>
 				</gastro-router>
-			</gastro-preloader>
-		</gastro-overlay>
+			</gastro-overlay>
+		</gastro-preloader>
       `;
 	}
 }
