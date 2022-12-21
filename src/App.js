@@ -1,7 +1,7 @@
 import { eventBus, Component } from './core';
 import { togglePreloader, checkPath } from './utils'
 import './components';
-import './auth'
+// import './auth'
 import { APP_EVENTS, APP_ROUTES } from './constants';
 import { authService } from './services';
 
@@ -183,12 +183,12 @@ export class App extends Component {
 							title="Home Page"
 						>
 						</gastro-route>
-						<gastro-private-route
+						<gastro-route
 							path="${APP_ROUTES.adminPage}"
 							component="gastro-admin-page"
 							title="Admin Page"
 						>
-						</gastro-private-route>
+						</gastro-route>
 						<gastro-route
 							path="${APP_ROUTES.signInPage}"
 							component="gastro-sign-in-page"
