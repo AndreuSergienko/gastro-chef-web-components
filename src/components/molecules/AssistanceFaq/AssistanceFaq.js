@@ -1,6 +1,8 @@
 import './AssistanceFaq.scss';
 import { Component } from '../../../core';
 import '../../atoms/AssistanceFaqQuestion'
+import { APP_EVENTS } from '../../../constants';
+import { setParentClass } from '../../../utils';
 
 export class AssistanceFaq extends Component {
     constructor() {
@@ -11,7 +13,7 @@ export class AssistanceFaq extends Component {
     }
 
     static get observedAttributes() {
-        return ['items']
+        return ['items', 'parent-class']
     }
 
     onOpen({ detail }) {
@@ -23,7 +25,8 @@ export class AssistanceFaq extends Component {
     }
 
     componentDidMount() {
-        this.addEventListener('open-question', this.onOpen)
+        setParentClass(this)
+        this.addEventListener(APP_EVENTS.openQuestion, this.onOpen)
     }
 
     render() {

@@ -1,13 +1,18 @@
 import './Phone.scss'
 import { Component } from '../../../core'
+import { setParentClass } from '../../../utils'
 
 export class Phone extends Component {
    constructor() {
       super()
    }
 
+   componentDidMount() {
+      setParentClass(this)
+   }
+
    static get observedAttributes() {
-      return ['classname', 'hasphoneicon']
+      return ['classname', 'hasphoneicon', 'parent-class']
    }
    render() {
       return `

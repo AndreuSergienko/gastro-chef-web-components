@@ -1,4 +1,5 @@
 import { Component } from "../../../core";
+import { setParentClass } from "../../../utils";
 import './Input.scss';
 
 export class Input extends Component {
@@ -21,16 +22,8 @@ export class Input extends Component {
         ];
     }
 
-    addClass() {
-        if (this.props['parent-class']) {
-            this.classList.add(this.props['parent-class'])
-            return
-        }
-        return
-    }
-
     componentDidMount() {
-        this.addClass()
+        setParentClass(this)
     }
 
     render() {

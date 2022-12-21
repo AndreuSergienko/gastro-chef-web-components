@@ -1,6 +1,7 @@
 import { Component } from "../../../core";
 import './DietModeButton.scss';
 import { APP_EVENTS } from "../../../constants";
+import { setParentClass } from "../../../utils";
 
 export class DietModeButton extends Component {
   constructor() {
@@ -8,7 +9,7 @@ export class DietModeButton extends Component {
   }
 
   static get observedAttributes() {
-    return ['mode', 'isactive', 'index']
+    return ['mode', 'isactive', 'index', 'parent-class']
   }
 
   onClick() {
@@ -19,6 +20,7 @@ export class DietModeButton extends Component {
   }
 
   componentDidMount() {
+    setParentClass(this)
     this.addEventListener('click', this.onClick)
   }
 
