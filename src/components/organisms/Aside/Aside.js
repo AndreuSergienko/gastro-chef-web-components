@@ -1,6 +1,5 @@
 import './Aside.scss'
-import { Component, eventBus } from '../../../core'
-import { APP_EVENTS, APP_ROUTES } from '../../../constants';
+import { Component} from '../../../core'
 
 export default class Aside extends Component {
    constructor() {
@@ -26,7 +25,7 @@ export default class Aside extends Component {
                      `aside__list-link--${item.modifier}` : ''
                   }"
                      >
-                        ${item.content ? item.content : ''}
+                        ${item.content ?? ''}
                         ${item.icon ?
                      `
                         <img 
