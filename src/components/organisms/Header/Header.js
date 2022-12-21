@@ -8,7 +8,6 @@ export class Header extends Component {
    constructor() {
       super();
       this.state = {
-         isLoading: false,
          navItemsWithoutUser: [
             {
                to: `${APP_ROUTES.blogPage}`,
@@ -57,18 +56,8 @@ export class Header extends Component {
       return ['is-user-logged']
    }
 
-
-   toggleIsLoading = () => {
-      this.setState((state) => {
-         return {
-            ...state,
-            isLoading: !state.isLoading,
-         };
-      });
-   };
-
    onClick(evt) {
-      if (evt.target.closest('.burger-button')) {
+      if (evt.target.closest('.open-burger')) {
          evt.preventDefault();
          this.dispatch(APP_EVENTS.toggleMenu)
       }
@@ -88,7 +77,6 @@ export class Header extends Component {
 
    render() {
       return `
-         <gastro-preloader is-loading="${this.state.isLoading}">
             <header class="header">
                <div class="container">
                   <div class="header-container">
@@ -101,22 +89,26 @@ export class Header extends Component {
                      </gastro-nav-link>
                      <gastro-navigation 
                         items='${JSON.parse(this.props['is-user-logged']) ?
-            JSON.stringify(this.state.navItemsWithUser) :
-            JSON.stringify(this.state.navItemsWithoutUser)}'
+                        JSON.stringify(this.state.navItemsWithUser) :
+                        JSON.stringify(this.state.navItemsWithoutUser)}'
                         active-link-path="${this.state.activeLinkPath}"
                         classname="header"
+                        parent-class="header__nav-wrapper"
                      >
                      </gastro-navigation>
                      <gastro-language 
+                        parent-class="header__language-wrapper"
                         classname="header"
                      >
                      </gastro-language>
                      <gastro-phone 
+                        parent-class="header__phone-button"
                         hasphoneicon="true" 
-                        classname="header__phone">
+                        classname="header__phone"
+                     >
                      </gastro-phone>
                      <gastro-button 
-                        classname="header__burger-button action-button burger-button" 
+                        classname="header__burger-button action-button open-burger" 
                         src="header/burger.svg"
                         evttype="${APP_EVENTS.openMenu}"
                      >
@@ -124,7 +116,6 @@ export class Header extends Component {
                   </div>
                </div>
             </header>
-         </gastro-preloader>
       `;
    }
 }
