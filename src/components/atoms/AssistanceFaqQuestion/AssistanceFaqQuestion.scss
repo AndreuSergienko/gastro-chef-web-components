@@ -12,15 +12,7 @@
 			transition: 0.3s;
 			&:hover {
 				background: $primary-color;
-				transition: 0.2s;
-			}
-			&:hover &-text {
 				color: #f5faff;
-				transition: 0.2s;
-			}
-			&:hover &-open-btn {
-				color: #f5faff;
-				transition: 0.2s;
 			}
 			&.open {
 				background: $primary-color;
@@ -42,7 +34,6 @@
 				line-height: 133.8%;
 				letter-spacing: 0.025em;
 				color: inherit;
-				transition: 0.3s;
 				@media (max-width: 576px) {
 					font-size: 14px;
 				}
@@ -51,22 +42,16 @@
 			&-open-btn {
 				background: transparent;
 				color: inherit;
-				transition: 0.3s;
 			}
 
 			&-answer {
-				display: none;
 				padding: 10px 0;
-				&.open {
-					display: block;
-				}
 
 				span {
 					font-family: 'Montserrat';
 					font-style: normal;
 					font-weight: 500;
 					font-size: 16px;
-					
 					letter-spacing: 0.025em;
 					color: inherit;
 					@media (max-width: 576px) {

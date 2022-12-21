@@ -62,7 +62,6 @@ export class Assistance extends Component {
                 </div>
             </div>
 
-            <div class="assistance__circle-md--transparent"></div>
             <div class="assistance__circle-md--filled"></div>
         </section>
         `

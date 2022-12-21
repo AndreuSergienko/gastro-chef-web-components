@@ -48,7 +48,15 @@ export class AdminPage extends Component {
       return moment().format('D.MM.YYYY')
    }
 
+   scrollToTop() {
+      window.scroll({
+         left: 0,
+         top: 0,
+      })
+   }
+
    componentDidMount() {
+      this.scrollToTop()
       this.addEventListener("submit", this.form.handleSubmit(this.createArticle));
    }
 

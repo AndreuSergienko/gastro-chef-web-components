@@ -80,7 +80,15 @@ export class SignInPage extends Component {
 
     };
 
+    scrollToTop() {
+        window.scroll({
+            left: 0,
+            top: 0,
+        })
+    }
+
     componentDidMount() {
+        this.scrollToTop()
         eventBus.on(APP_EVENTS.validateControls, this.validate);
         this.addEventListener("click", this.validateForm);
         this.addEventListener("submit", this.form.handleSubmit(this.signIn));

@@ -31,12 +31,13 @@ export class AssistanceFaqQuestion extends Component {
                     <i class="fa-solid fa-angle-right"></i>
                 </button>
             </div>
-
+            ${JSON.parse(this.props['is-open']) ? `
             <div
-                class="assistance__faq-question-answer ${JSON.parse(this.props['is-open']) ? 'open' : ''}"
+                class="assistance__faq-question-answer"
             >
                 <span>${this.props.answer}</span>
             </div>
+            ` : ''}
         </div>
         `
     }

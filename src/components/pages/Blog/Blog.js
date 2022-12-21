@@ -36,7 +36,15 @@ export class BlogPage extends Component {
             })
     }
 
+    scrollToTop() {
+        window.scroll({
+            left: 0,
+            top: 0,
+        })
+    }
+
     componentDidMount() {
+        this.scrollToTop()
         this.getArticles()
     }
 
