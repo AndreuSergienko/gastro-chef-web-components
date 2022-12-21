@@ -87,8 +87,8 @@ export class Footer extends Component {
     }
 
     onClick(evt) {
-        evt.preventDefault();
         if (evt.target.closest('.sign-out-link')) {
+            evt.preventDefault();
             eventBus.emit(APP_EVENTS.userLoggedOut)
         }
     }
@@ -134,11 +134,11 @@ export class Footer extends Component {
                             classname="footer__contacts-socials"
                         >
                         </gastro-socials>
-						<a 
-                            href="tel: 380689494919" class="footer__contacts-phone"
+						<gastro-phone 
+                            hasphoneicon="false" 
+                            classname="footer__contacts-phone"
                         >
-							+38 (068) 949 - 49 - 19
-						</a>
+                        </gastro-phone>
 					</div>
 				</div>
 			</div>

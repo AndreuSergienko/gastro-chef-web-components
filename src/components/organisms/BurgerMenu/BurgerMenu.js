@@ -77,8 +77,8 @@ export class BurgerMenu extends Component {
                <div class="burger__top">
                   <gastro-navigation 
                      items='${JSON.parse(this.props['is-user-logged']) ?
-                     JSON.stringify(this.state.navItemsWithUser) :
-                     JSON.stringify(this.state.navItemsWithoutUser)}'
+            JSON.stringify(this.state.navItemsWithUser) :
+            JSON.stringify(this.state.navItemsWithoutUser)}'
                      classname="burger"
                      active-link-path="${this.state.activeLinkPath}"
                      >
@@ -95,7 +95,7 @@ export class BurgerMenu extends Component {
                   </div>
                </div>
                <div class="burger__bottom">
-                  <gastro-phone classname="burger" hasphoneicon="false">
+                  <gastro-phone classname="burger__phone" hasphoneicon="false">
                   </gastro-phone>
                </div>
          </div>

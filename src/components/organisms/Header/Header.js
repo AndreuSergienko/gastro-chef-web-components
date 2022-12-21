@@ -68,11 +68,12 @@ export class Header extends Component {
    };
 
    onClick(evt) {
-      evt.preventDefault();
       if (evt.target.closest('.burger-button')) {
+         evt.preventDefault();
          this.dispatch(APP_EVENTS.toggleMenu)
       }
       if (evt.target.closest('.sign-out-link')) {
+         evt.preventDefault();
          eventBus.emit(APP_EVENTS.userLoggedOut)
       }
    }
@@ -110,7 +111,9 @@ export class Header extends Component {
                         classname="header"
                      >
                      </gastro-language>
-                     <gastro-phone hasphoneicon="true" classname="header">
+                     <gastro-phone 
+                        hasphoneicon="true" 
+                        classname="header__phone">
                      </gastro-phone>
                      <gastro-button 
                         classname="header__burger-button action-button burger-button" 

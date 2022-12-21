@@ -141,22 +141,5 @@
 				}
 			}
 		}
-
-		&-phone {
-			font-family: 'Montserrat';
-			font-style: normal;
-			font-weight: 700;
-			font-size: 20px;
-			line-height: 24px;
-			color: $primary-color;
-			@media (max-width: 992px) {
-				font-size: 17px;
-				line-height: 21px;
-			}
-			@media (max-width: 768px) {
-				font-size: 14px;
-				line-height: 17px;
-			}
-		}
 	}
 }

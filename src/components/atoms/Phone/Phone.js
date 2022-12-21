@@ -11,12 +11,14 @@ export class Phone extends Component {
    }
    render() {
       return `
-      <a href="tel: +380689494919" class="${this.props.classname}__phone phone-button">
-         <span class="${this.props.classname}__phone-num">+38 (068) 949 - 49 -19</span>
+      <a href="tel: +380689494919" class="${this.props.classname ?? ''} phone-button">
+         <span class="${this.props.classname ?? 'phone'}-num">
+            +38 (068) 949 - 49 -19
+         </span>
          ${JSON.parse(this.props.hasphoneicon) ?
             `
             <img 
-               class="${this.props.classname}__phone-icon"
+               class="${this.props.classname}-icon"
                src="../../../assets/images/header/phone.svg"
                alt="Phone icon"
             />

@@ -2,13 +2,8 @@
 
 .phone-button {
 	display: flex;
-	padding: 12px 0;
 	justify-content: center;
 	align-items: center;
-	background: #f5faff;
-	box-shadow: 0px 0px 40px rgba(86, 86, 86, 0.3);
-	border-radius: 190px;
-	border: 3px solid #f5faff;
 	font-weight: 700;
 }
 
@@ -34,6 +29,11 @@
 		line-height: 24px;
 		color: $primary-color;
 		transition: 0.3s;
+		background: #f5faff;
+		box-shadow: 0px 0px 40px rgba(86, 86, 86, 0.3);
+		border-radius: 190px;
+		border: 3px solid #f5faff;
+		padding: 12px 0;
 
 		&:hover {
 			background: $primary-color;
@@ -77,5 +77,41 @@
 		line-height: 24px;
 		background: $primary-color;
 		color: #f5faff;
+		box-shadow: 0px 0px 40px rgba(86, 86, 86, 0.3);
+		border-radius: 190px;
+		border: 3px solid #f5faff;
+		padding: 12px 0;
+		transition: 0.2s;
+
+		&:hover {
+			color: $primary-color;
+			background: #f5faff;
+			border-color: $primary-color;
+		}
+	}
+}
+
+.footer {
+	&__contacts {
+		&-phone {
+			font-family: 'Montserrat';
+			font-style: normal;
+			font-weight: 700;
+			font-size: 20px;
+			line-height: 24px;
+			color: $primary-color;
+			transition: 0.3s;
+			@media (max-width: 992px) {
+				font-size: 17px;
+				line-height: 21px;
+			}
+			@media (max-width: 768px) {
+				font-size: 14px;
+				line-height: 17px;
+			}
+			&:hover {
+				text-shadow: 0 0 10px #ccc;
+			}
+		}
 	}
 }
