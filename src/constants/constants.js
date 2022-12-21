@@ -5,6 +5,7 @@ export const APP_EVENTS = {
    switchMode: 'switch-mode',
    userLoggedIn: 'user-logged-in',
    userLoggedOut: 'user-logged-out',
+   openQuestion: 'open-question',
 }
 
 export const APP_ROUTES = {
