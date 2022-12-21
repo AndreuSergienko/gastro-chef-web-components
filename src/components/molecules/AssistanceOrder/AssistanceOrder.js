@@ -3,6 +3,7 @@ import { Component, eventBus, FormManager, Validator } from '../../../core';
 import { initialFieldsState } from './initialState'
 import '../OrderForm'
 import { APP_EVENTS } from '../../../constants';
+import { setParentClass } from '../../../utils';
 
 export class AssistanceOrder extends Component {
     constructor() {
@@ -44,7 +45,12 @@ export class AssistanceOrder extends Component {
         });
     };
 
+    static get observedAttributes() {
+        return ['parent-class']
+    }
+
     componentDidMount() {
+        setParentClass(this)
         this.addEventListener("click", this.validateForm);
         eventBus.on(APP_EVENTS.validateControls, this.validate);
         this.addEventListener("submit", this.form.handleSubmit(this.registerUser));

@@ -1,5 +1,6 @@
 import './Navigation.scss'
 import * as core from '../../../core'
+import { setParentClass } from '../../../utils'
 
 export class Navigation extends core.Component {
    constructor() {
@@ -7,7 +8,17 @@ export class Navigation extends core.Component {
    }
 
    static get observedAttributes() {
-      return ['items', 'classname', 'active-link-path', 'is-user-logged']
+      return [
+         'items',
+         'classname',
+         'active-link-path',
+         'is-user-logged',
+         'parent-class',
+      ]
+   }
+
+   componentDidMount() {
+      setParentClass(this)
    }
 
    render() {

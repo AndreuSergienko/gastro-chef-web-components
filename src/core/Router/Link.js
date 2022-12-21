@@ -1,6 +1,7 @@
 import { Component } from "../Component";
 import { APP_EVENTS } from "../../constants";
 import { eventBus } from "../EventBus";
+import { setParentClass } from "../../utils";
 
 export class Link extends Component {
     constructor() {
@@ -9,7 +10,7 @@ export class Link extends Component {
     }
 
     static get observedAttributes() {
-        return ['to', 'classname', 'label']
+        return ['to', 'parent-class', 'label']
     }
 
     onClick = (evt) => {
@@ -20,16 +21,8 @@ export class Link extends Component {
     }
 
     componentDidMount() {
-        this.addClass(this.props.classname)
+        setParentClass(this)
         this.addEventListener('click', this.onClick)
-    }
-
-    addClass(classname) {
-        if (classname) {
-            this.classList.add(classname)
-            return;
-        }
-        return;
     }
 
     componentWillUnmount() {

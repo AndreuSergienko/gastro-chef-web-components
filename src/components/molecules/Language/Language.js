@@ -1,5 +1,6 @@
 import './Language.scss'
 import { Component } from '../../../core'
+import { setParentClass } from '../../../utils'
 
 export class Language extends Component {
    constructor() {
@@ -7,7 +8,11 @@ export class Language extends Component {
    }
 
    static get observedAttributes() {
-      return ['classname']
+      return ['classname', 'parent-class']
+   }
+
+   componentDidMount() {
+      setParentClass(this)
    }
 
    render() {
