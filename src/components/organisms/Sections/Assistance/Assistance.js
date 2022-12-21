@@ -53,9 +53,12 @@ export class Assistance extends Component {
         <section class="assistance">
             <div class="container-02">
                 <div class="assistance-container">
-                    <gastro-assistance-order>
+                    <gastro-assistance-order
+                        parent-class="assistance__order-wrapper"
+                    >
                     </gastro-assistance-order>
                     <gastro-assistance-faq
+                        parent-class="assistance__faq-wrapper"
                         items='${JSON.stringify(this.state.faqItems)}'
                     >
                     </gastro-assistance-faq>

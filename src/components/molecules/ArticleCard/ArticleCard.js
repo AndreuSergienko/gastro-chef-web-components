@@ -27,7 +27,7 @@ export class ArticleCard extends core.Component {
             </span>
             <gastro-nav-link
                 to="${APP_ROUTES.blogPage}/${id}"
-                classname="articles__item-link"
+                parent-class="articles__item-link"
             >
                 <div class="articles__item-more">
                     <span class="articles__item-more-text">
