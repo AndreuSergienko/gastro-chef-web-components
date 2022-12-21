@@ -1,5 +1,6 @@
 import { Component } from "../../../core";
 import { articleService } from "../../../services";
+import { togglePreloader } from "../../../utils";
 import '../../organisms/Sections'
 import '../../atoms/Preloader'
 
@@ -12,17 +13,8 @@ export class BlogPage extends Component {
         }
     }
 
-    toggleIsLoading() {
-        this.setState((state) => {
-            return {
-                ...state,
-                isLoading: !state.isLoading,
-            };
-        });
-    }
-
     getArticles() {
-        this.toggleIsLoading()
+        togglePreloader(this)
         articleService.getArticles()
             .then((data) => {
                 this.setState((state) => {
@@ -32,7 +24,7 @@ export class BlogPage extends Component {
                     }
                 })
             }).finally(() => {
-                this.toggleIsLoading()
+                togglePreloader(this)
             })
     }
 

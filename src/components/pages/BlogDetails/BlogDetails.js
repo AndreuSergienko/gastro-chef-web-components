@@ -1,5 +1,6 @@
 import { Component } from "../../../core";
 import { articleService } from '../../../services'
+import { togglePreloader } from "../../../utils";
 import '../../atoms/Preloader'
 import './BlogDetails.scss';
 
@@ -16,17 +17,8 @@ export class BlogDetailsPage extends Component {
         return ['id']
     }
 
-    toggleIsLoading() {
-        this.setState((state) => {
-            return {
-                ...state,
-                isLoading: !state.isLoading,
-            };
-        });
-    }
-
     getArticle() {
-        this.toggleIsLoading();
+        togglePreloader(this);
         articleService.getArticle(this.props.id)
             .then((data) => {
                 this.setState((state) => ({
@@ -34,7 +26,7 @@ export class BlogDetailsPage extends Component {
                     blog: data
                 }))
             })
-            .finally(() => this.toggleIsLoading())
+            .finally(() => togglePreloader(this))
     }
 
 

@@ -1,5 +1,6 @@
 import './AdminPanel.scss';
 import moment from 'moment';
+import { togglePreloader } from '../../../utils';
 import { Component, FormManager } from "../../../core";
 import { storageService, articleService } from "../../../services";
 import '../../atoms/Preloader';
@@ -15,7 +16,7 @@ export class AdminPage extends Component {
    }
 
    createArticle = (data) => {
-      this.toggleIsLoading()
+      togglePreloader(this)
       storageService
          .uploadPoster(data.poster)
          .then((snapshot) => {
@@ -29,20 +30,11 @@ export class AdminPage extends Component {
                      console.log(error);
                   })
                   .finally(() => {
-                     this.toggleIsLoading()
+                     togglePreloader(this)
                   })
             });
          })
    };
-
-   toggleIsLoading() {
-      this.setState((state) => {
-         return {
-            ...state,
-            isLoading: !state.isLoading,
-         };
-      });
-   }
 
    generateDate = () => {
       return moment().format('D.MM.YYYY')

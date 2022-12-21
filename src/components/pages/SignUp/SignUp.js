@@ -2,6 +2,7 @@ import { Component, FormManager, Validator, eventBus } from "../../../core";
 import { initialFieldsState } from "./initialState";
 import "../../atoms";
 import "../../molecules";
+import { togglePreloader } from "../../../utils";
 import { authService } from "../../../services";
 import { APP_ROUTES, APP_EVENTS } from "../../../constants";
 import './SignUp.scss'
@@ -20,17 +21,8 @@ export class SignUpPage extends Component {
         this.form = new FormManager();
     }
 
-    toggleIsLoading = () => {
-        this.setState((state) => {
-            return {
-                ...state,
-                isLoading: !state.isLoading,
-            };
-        });
-    };
-
     signUp = (data) => {
-        this.toggleIsLoading();
+        togglePreloader(this);
         authService
             .signUp(data.email, data.password)
             .then((user) => {
@@ -50,7 +42,7 @@ export class SignUpPage extends Component {
                 });
             })
             .finally(() => {
-                this.toggleIsLoading();
+                togglePreloader(this);
             });
     };
 
