@@ -1,5 +1,6 @@
 import './AssistanceFaqQuestion.scss'
 import { Component } from '../../../core'
+import { APP_EVENTS } from '../../../constants'
 
 export class AssistanceFaqQuestion extends Component {
     constructor() {
@@ -11,7 +12,7 @@ export class AssistanceFaqQuestion extends Component {
     }
 
     onClick() {
-        this.dispatch('open-question', {
+        this.dispatch(APP_EVENTS.openQuestion, {
             activeIndex: +this.props.index
         })
     }
