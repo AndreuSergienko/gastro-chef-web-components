@@ -11,7 +11,7 @@ export class Overlay extends Component {
         return ["is-open"];
     }
 
-    addClass() {
+    toggleClass() {
         if (JSON.parse(this.props["is-open"])) {
             this.classList.add('overlay-parent')
         } else {
@@ -30,7 +30,7 @@ export class Overlay extends Component {
     }
 
     componentDidMount() {
-        this.addClass()
+        this.toggleClass()
         this.addEventListener('click', this.onClick)
     }
 
