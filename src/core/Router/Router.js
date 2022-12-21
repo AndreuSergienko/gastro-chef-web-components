@@ -1,6 +1,6 @@
 import { APP_EVENTS } from '../../constants';
 import { eventBus } from '../EventBus';
-import { matchRoute } from '../utils'
+import { matchRoute } from '../../utils'
 
 export class Router extends HTMLElement {
     get outlet() {
