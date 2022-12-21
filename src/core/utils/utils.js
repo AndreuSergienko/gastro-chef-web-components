@@ -48,3 +48,7 @@ export function matchRoute(routes, uri) {
 
   return match || null;
 }
+
+export const toggleIsLoading = () => {
+
+}
