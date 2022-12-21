@@ -1,5 +1,6 @@
 import './Button.scss';
 import { Component } from '../../../core';
+import { setParentClass } from '../../../utils';
 
 export class Button extends Component {
 	constructor() {
@@ -10,16 +11,8 @@ export class Button extends Component {
 		return ['type', 'src', 'content', 'classname', 'evttype', 'parent-class'];
 	}
 
-	addClass() {
-		if (this.props['parent-class']) {
-			this.classList.add(this.props['parent-class'])
-			return;
-		}
-		return;
-	}
-
 	componentDidMount() {
-		this.addClass()
+		setParentClass(this)
 	}
 
 	render() {
