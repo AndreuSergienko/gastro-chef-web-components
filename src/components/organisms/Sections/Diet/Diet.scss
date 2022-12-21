@@ -14,15 +14,13 @@
 	}
 
 	&__tabs {
+		&-tab {
+			flex: 0 1 50%;
+		}
 		&-btns {
 			display: flex;
 			justify-content: center;
 			gap: 20px;
-
-			gastro-button {
-				flex: 0 1 50%;
-			}
-
 			@media (max-width: 768px) {
 				gap: 11px;
 			}

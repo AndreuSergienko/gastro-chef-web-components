@@ -1,6 +1,7 @@
 @import '../../../scss/theme/colors.scss';
 
 gastro-aside {
+	
 }
 
 .aside {
@@ -124,7 +125,7 @@ gastro-aside {
 
 			&--bottle {
 				img {
-					@media (max-width: 1300px) {
+					@media (max-width: 1450px) {
 						width: 32px;
 					}
 					@media (max-width: 768px) {

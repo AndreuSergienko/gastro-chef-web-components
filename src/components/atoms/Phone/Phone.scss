@@ -8,7 +8,7 @@
 }
 
 .header {
-	gastro-phone {
+	&__phone-button {
 		flex: 0 1 280px;
 		@media (max-width: 1200px) {
 			flex-basis: 230px;

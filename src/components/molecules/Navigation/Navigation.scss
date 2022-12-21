@@ -1,7 +1,7 @@
 @import '../../../scss/theme/colors.scss';
 
 .header {
-	gastro-navigation {
+	&__nav-wrapper {
 		flex: 1 1 auto;
 		@media (max-width: 610px) {
 			display: none;
