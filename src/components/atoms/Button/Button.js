@@ -14,13 +14,21 @@ export class Button extends Component {
 			'content',
 			'is-active',
 			'classname',
-			'evttype',
+			'evt-type',
 			'parent-class',
+			'id',
 		];
+	}
+
+	onClick() {
+		if (this.props['evt-type']) {
+			this.dispatch(this.props['evt-type'], { id: this.props.id })
+		}
 	}
 
 	componentDidMount() {
 		setParentClass(this)
+		this.addEventListener('click', this.onClick)
 	}
 
 	render() {

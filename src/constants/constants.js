@@ -7,6 +7,7 @@ export const APP_EVENTS = {
    userLoggedIn: 'user-logged-in',
    userLoggedOut: 'user-logged-out',
    openQuestion: 'open-question',
+   removeArticle: 'remove-article',
 }
 
 export const APP_ROUTES = {
