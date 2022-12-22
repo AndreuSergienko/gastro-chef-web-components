@@ -50,7 +50,6 @@ export class Router extends HTMLElement {
     }
 
     onPopState = () => {
-        console.log('popstate');
         this.navigate(window.location.pathname)
     }
 
