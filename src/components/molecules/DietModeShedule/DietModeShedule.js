@@ -24,7 +24,7 @@ export class DietModeShedule extends Component {
             ${shedule.map(({ day }, index) => (`
               <gastro-diet-day-button 
                 index="${index}"
-                is-active='${index === activeDayIndex ? true : false}'
+                is-active='${index === activeDayIndex}'
                 content="${day}"
                 classname="diet__modes-content-shedule-day menu-day"
               >
@@ -39,7 +39,7 @@ export class DietModeShedule extends Component {
                     ${mealName}
                   </span>
                   <span class="diet__modes-content-shedule-menu-meal-time">
-                  ${mealTime}
+                    ${mealTime}
                   </span>
                 </div>
                 <div class="diet__modes-content-shedule-menu-dishes">

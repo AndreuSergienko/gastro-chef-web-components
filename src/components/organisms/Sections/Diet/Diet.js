@@ -61,7 +61,7 @@ export class Diet extends Component {
               parent-class='diet__modes-mode'
               mode='${JSON.stringify(mode)}'
               index='${index}'
-              isactive='${index === this.state.activeModeIndex ? true : false}'
+              isactive='${index === this.state.activeModeIndex}'
             >
             </gastro-diet-mode-button>
           `)).join('')}             
