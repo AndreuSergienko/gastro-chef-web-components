@@ -104,13 +104,14 @@
 						@media (max-width: 576px) {
 							flex-basis: auto;
 							display: flex;
+							align-items: flex-end;
 							gap: 20px;
 						}
 
 						&-name {
 							font-family: 'Montserrat';
 							font-style: normal;
-							font-weight: 400;
+							font-weight: 500;
 							font-size: 18px;
 							line-height: 24px;
 							display: block;
@@ -164,7 +165,7 @@
 						&-name {
 							font-family: 'Montserrat';
 							font-style: normal;
-							font-weight: 400;
+							font-weight: 500;
 							font-size: 16px;
 							line-height: 22px;
 							color: #000;
@@ -201,7 +202,7 @@
 							display: block;
 							font-family: 'Montserrat';
 							font-style: normal;
-							font-weight: 400;
+							font-weight: 500;
 							font-size: 16px;
 							line-height: 22px;
 							color: #000;
