@@ -53,12 +53,12 @@ export class DietModeContent extends Component {
 
   render() {
     const {
-      title, calories, isActive, priceList, shedule
+      title, calories, priceList, shedule
     } = JSON.parse(this.props.mode);
 
     return `
       <div class="diet__modes-content">
-        <div class="diet__modes-content-item ${isActive ? 'active' : ''}">
+        <div class="diet__modes-content-item">
           <gastro-diet-mode-info
             parent-class="diet__modes-content-info-wrapper"
             title="${title}"
