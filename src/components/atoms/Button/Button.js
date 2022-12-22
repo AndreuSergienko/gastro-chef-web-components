@@ -8,7 +8,15 @@ export class Button extends Component {
 	}
 
 	static get observedAttributes() {
-		return ['type', 'src', 'content', 'classname', 'evttype', 'parent-class'];
+		return [
+			'type',
+			'src',
+			'content',
+			'is-active',
+			'classname',
+			'evttype',
+			'parent-class',
+		];
 	}
 
 	componentDidMount() {
@@ -16,6 +24,8 @@ export class Button extends Component {
 	}
 
 	render() {
+		const setAddClass = this.props['is-active'] ? JSON.parse(this.props['is-active']) : false
+
 		return `
       <button
 		class="${this.props.classname}"

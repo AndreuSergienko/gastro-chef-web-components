@@ -3,6 +3,7 @@ export const APP_EVENTS = {
    changeRoute: 'change-route',
    toggleMenu: 'toggle-menu',
    switchMode: 'switch-mode',
+   changeDailyMenu: 'change-daily-menu',
    userLoggedIn: 'user-logged-in',
    userLoggedOut: 'user-logged-out',
    openQuestion: 'open-question',

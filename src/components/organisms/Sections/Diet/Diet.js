@@ -4,45 +4,16 @@ import '../../../atoms/Button';
 import '../../../atoms/DietModeButton';
 import '../../../molecules/DietModeContent';
 import { APP_EVENTS } from "../../../../constants";
+import { modesData } from './modesData'
 
 export class Diet extends Component {
   constructor() {
     super();
     this.state = {
-      modesData: [
-        {
-          title: 'express',
-          calories: 800,
-        },
-        {
-          title: 'slim',
-          calories: 1000,
-        },
-        {
-          title: 'fitness',
-          calories: 1300,
-        },
-        {
-          title: 'balance',
-          calories: 1600,
-        },
-        {
-          title: 'balance +',
-          calories: 1800,
-        },
-        {
-          title: 'strong',
-          calories: 2000,
-        },
-        {
-          title: 'maxi',
-          calories: 2400,
-        },
-      ],
+      modesData: modesData,
       activeModeIndex: 0,
       outletMode: {
-        title: 'express',
-        calories: 800,
+        ...modesData[0],
         isActive: false,
       }
     }
@@ -53,7 +24,7 @@ export class Diet extends Component {
       ...state,
       activeModeIndex: detail.clickedModeIndex,
       outletMode: {
-        ...detail.mode,
+        ...modesData[detail.clickedModeIndex],
         isActive: true,
       },
     }))
@@ -90,7 +61,7 @@ export class Diet extends Component {
               parent-class='diet__modes-mode'
               mode='${JSON.stringify(mode)}'
               index='${index}'
-              isactive='${index === this.state.activeModeIndex ? true : false}'
+              isactive='${index === this.state.activeModeIndex}'
             >
             </gastro-diet-mode-button>
           `)).join('')}             

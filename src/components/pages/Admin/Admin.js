@@ -1,9 +1,10 @@
 import './AdminPanel.scss';
 import moment from 'moment';
 import { togglePreloader } from '../../../utils';
-import { Component, FormManager } from "../../../core";
-import { storageService, articleService } from "../../../services";
+import { Component, FormManager, eventBus } from "../../../core";
+import { storageService, articleService, authService } from "../../../services";
 import '../../atoms/Preloader';
+import { APP_ROUTES, APP_EVENTS } from '../../../constants';
 
 
 export class AdminPage extends Component {
@@ -47,7 +48,16 @@ export class AdminPage extends Component {
       })
    }
 
+   checkUser() {
+      if (!authService.user && window.location.pathname === APP_ROUTES.adminPage) {
+         eventBus.emit(APP_EVENTS.changeRoute, {
+            target: APP_ROUTES.signInPage,
+         });
+      }
+   }
+
    componentDidMount() {
+      this.checkUser()
       this.scrollToTop()
       this.addEventListener("submit", this.form.handleSubmit(this.createArticle));
    }
