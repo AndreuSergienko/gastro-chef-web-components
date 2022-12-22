@@ -1,18 +1,60 @@
 import { Component } from '../../../core';
 import './DietModeContent.scss';
 import '../../atoms/Button';
+import { APP_EVENTS } from '../../../constants';
 
 export class DietModeContent extends Component {
   constructor() {
     super();
+    this.state = {
+      shedule: [],
+      outletMenuDay: {},
+      activeDayIndex: 0,
+    }
   }
 
   static get observedAttributes() {
     return ['mode']
   }
 
+  initOutletDailyMenu({ shedule }) {
+    this.setState((state) => {
+      return {
+        ...state,
+        shedule: shedule,
+        outletMenuDay: {
+          ...shedule[this.state.activeDayIndex]
+        }
+      }
+    })
+  }
+
+  onMenuChange({ detail }) {
+    this.setState((state) => {
+      return {
+        ...state,
+        outletMenuDay: {
+          ...state.shedule[detail.activeDayIndex]
+        },
+        activeDayIndex: detail.activeDayIndex
+      }
+    })
+  }
+
+  componentDidMount() {
+    this.initOutletDailyMenu(JSON.parse(this.props.mode))
+    this.addEventListener(APP_EVENTS.changeDailyMenu, this.onMenuChange)
+  }
+
+  componentWillUnmount() {
+    this.removeEventListener(APP_EVENTS.changeDailyMenu, this.onMenuChange)
+  }
+
   render() {
-    const { title, calories, isActive } = JSON.parse(this.props.mode);
+    const {
+      title, calories, isActive, priceList, shedule
+    } = JSON.parse(this.props.mode);
+
     return `
       <div class="diet__modes-content">
         <div class="diet__modes-content-item ${isActive ? 'active' : ''}">
@@ -29,71 +71,19 @@ export class DietModeContent extends Component {
               </p>
             </div>
             <div class="diet__modes-content-info-price-list">
+            ${priceList.map((field) => (`
               <div class="diet__modes-content-info-price-list-item">
                 <span class="diet__modes-content-info-price-list-days">
-                    Тестовый день
+                    ${field.dayTitle}
                 </span>
                 <span class="diet__modes-content-info-price-list-nonsale">
-                    510 грн
+                    ${field.beforeSale} грн
                 </span>
                 <span class="diet__modes-content-info-price-list-sale">
-                    357 грн
-                </span>
-                </div>
-                <div class="diet__modes-content-info-price-list-item">
-                <span class="diet__modes-content-info-price-list-days">
-                    1 день
-                </span>
-                <span class="diet__modes-content-info-price-list-nonsale">
-                </span>
-                <span class="diet__modes-content-info-price-list-sale">
-                    510 грн
-                </span>
-                </div>
-                <div class="diet__modes-content-info-price-list-item">
-                <span class="diet__modes-content-info-price-list-days">
-                    от 7 дней
-                </span>
-                <span class="diet__modes-content-info-price-list-nonsale">
-                    510 грн
-                </span>
-                <span class="diet__modes-content-info-price-list-sale">
-                    490 грн
-                </span>
-                </div>
-                <div class="diet__modes-content-info-price-list-item">
-                <span class="diet__modes-content-info-price-list-days">
-                    от 14 дней
-                </span>
-                <span class="diet__modes-content-info-price-list-nonsale">
-                    510 грн
-                </span>
-                <span class="diet__modes-content-info-price-list-sale">
-                    470 грн
-                </span>
-                </div>
-                <div class="diet__modes-content-info-price-list-item">
-                <span class="diet__modes-content-info-price-list-days">
-                    от 30 дней
-                </span>
-                <span class="diet__modes-content-info-price-list-nonsale">
-                    510 грн
-                </span>
-                <span class="diet__modes-content-info-price-list-sale">
-                    445 грн
-                </span>
-                </div>
-                <div class="diet__modes-content-info-price-list-item">
-                <span class="diet__modes-content-info-price-list-days">
-                    Завтрак и ужин
-                </span>
-                <span class="diet__modes-content-info-price-list-nonsale non-line-through">
-                    -15%
-                </span>
-                <span class="diet__modes-content-info-price-list-sale">
-                    433 грн
+                    ${field.afterSale} грн
                 </span>
               </div>
+            `)).join('')}
             </div>
             <gastro-button
               content="Заказать"
@@ -103,111 +93,43 @@ export class DietModeContent extends Component {
           </div>
           <div class="diet__modes-content-shedule">
             <div class="diet__modes-content-shedule-days">
-              <button type="button" class="diet__modes-content-shedule-day">
-                пн
-              </button>
-              <button type="button" class="diet__modes-content-shedule-day">
-                вт
-              </button>
-              <button type="button" class="diet__modes-content-shedule-day">
-                ср
-              </button>
-              <button type="button" class="diet__modes-content-shedule-day">
-                чт
-              </button>
-              <button type="button" class="diet__modes-content-shedule-day">
-                пт
-              </button>
-              <button type="button" class="diet__modes-content-shedule-day">
-                сб
-              </button>
-              <button type="button" class="diet__modes-content-shedule-day">
-                вс
-              </button>
+            ${shedule.map(({ day }, index) => (`
+              <gastro-diet-day-button 
+                index="${index}"
+                is-active='${index === this.state.activeDayIndex ? true : false}'
+                content="${day}"
+                classname="diet__modes-content-shedule-day menu-day"
+              >
+              </gastro-diet-day-button>
+            `)).join('')}             
             </div>
             <div class="diet__modes-content-shedule-menu">
+            ${this.state.outletMenuDay?.menu?.map(({ mealName, mealTime, dishes, portion }) => (`
               <div class="diet__modes-content-shedule-menu-item">
                 <div class="diet__modes-content-shedule-menu-meal">
-                  <span class="diet__modes-content-shedule-menu-meal-name">Завтрак</span>
-                  <span class="diet__modes-content-shedule-menu-meal-time">7:00 - 9:00</span>
+                  <span class="diet__modes-content-shedule-menu-meal-name">
+                    ${mealName}
+                  </span>
+                  <span class="diet__modes-content-shedule-menu-meal-time">
+                  ${mealTime}
+                  </span>
                 </div>
                 <div class="diet__modes-content-shedule-menu-dishes">
+                ${dishes.map((dish) => (`
                   <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Фриттата с сыром и кабачками
+                    ${dish}
                   </span>
+                `)).join('')}
                 </div>
                 <div class="diet__modes-content-shedule-menu-portion">
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">170гр</span>
-                </div>
-              </div>
-              <div class="diet__modes-content-shedule-menu-item">
-                <div class="diet__modes-content-shedule-menu-meal">
-                  <span class="diet__modes-content-shedule-menu-meal-name">2-й завтрак</span>
-                  <span class="diet__modes-content-shedule-menu-meal-time">10:00 - 12:00</span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-dishes">
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Фермерский йогурт
+                ${portion.map(({ quantity, unit }) => (`
+                  <span class="diet__modes-content-shedule-menu-portion-quantity">
+                      ${quantity}${unit}
                   </span>
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Полезное печенье из сухофруктов
-                  </span>
+                `)).join('')}
                 </div>
-                <div class="diet__modes-content-shedule-menu-portion">
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">200гр</span>
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">2 шт</span>
-                </div>
-              </div>
-              <div class="diet__modes-content-shedule-menu-item">
-                <div class="diet__modes-content-shedule-menu-meal">
-                  <span class="diet__modes-content-shedule-menu-meal-name">Обед</span>
-                  <span class="diet__modes-content-shedule-menu-meal-time">13:00 - 15:00</span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-dishes">
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Люля-кебаб из индейки
-                  </span>
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Летний салат с маслинами и сыром
-                  </span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-portion">
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">100гр</span>
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">100гр</span>
-                </div>
-              </div>
-              <div class="diet__modes-content-shedule-menu-item">
-                <div class="diet__modes-content-shedule-menu-meal">
-                  <span class="diet__modes-content-shedule-menu-meal-name">Полдник</span>
-                  <span class="diet__modes-content-shedule-menu-meal-time">16:00 - 17:30</span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-dishes">
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Творожное суфле с какао и вишей
-                  </span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-portion">
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">100гр</span>
-                </div>
-              </div>
-              <div class="diet__modes-content-shedule-menu-item">
-                <div class="diet__modes-content-shedule-menu-meal">
-                  <span class="diet__modes-content-shedule-menu-meal-name">Ужин</span>
-                  <span class="diet__modes-content-shedule-menu-meal-time">19:00 - 20:00</span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-dishes">
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Рыбный терен
-                  </span>
-                  <span class="diet__modes-content-shedule-menu-dishes-name">
-                    - Овощи гриль
-                  </span>
-                </div>
-                <div class="diet__modes-content-shedule-menu-portion">
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">100гр</span>
-                  <span class="diet__modes-content-shedule-menu-portion-quantity">150гр</span>
-                </div>
-              </div>
+              </div>  
+            `)).join('')}
             </div>
           </div>
         </div>
