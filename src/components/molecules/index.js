@@ -2,6 +2,8 @@ export * from './Navigation';
 export * from './Language';
 export * from './HeroSwiper';
 export * from './DietModeContent';
+export * from './DietModeInfo';
+export * from './DietModeShedule';
 export * from './DishesSwiper';
 export * from './AssistanceOrder';
 export * from './AssistanceFaq';
