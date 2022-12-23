@@ -40,7 +40,6 @@ export class BlogDetailsPage extends Component {
             <section class="blog-details">
                 <div class="container">
                     <div class="blog-details-container">
-                        <div class="blog-details__wrapper">
                             <div class="blog-details__info">
                                 <div class="blog-details__header">
                                     <h2 class="blog-details__title">
@@ -54,7 +53,6 @@ export class BlogDetailsPage extends Component {
                                     ${this.state.blog.description || 'No description added'}
                                 </p>
                             </div>
-                        </div>
                     </div>
                 </div>
             </section>
