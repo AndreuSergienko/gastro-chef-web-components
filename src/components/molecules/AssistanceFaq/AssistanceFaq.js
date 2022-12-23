@@ -29,6 +29,10 @@ export class AssistanceFaq extends Component {
         this.addEventListener(APP_EVENTS.openQuestion, this.onOpen)
     }
 
+    componentWillUnmount() {
+        this.removeEventListener(APP_EVENTS.openQuestion, this.onOpen)
+    }
+
     render() {
         return `
         <div class="assistance__faq">

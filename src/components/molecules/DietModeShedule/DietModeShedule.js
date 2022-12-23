@@ -16,8 +16,9 @@ export class DietModeShedule extends Component {
 
   render() {
     const shedule = JSON.parse(this.props.shedule),
-      outletMenuDay = JSON.parse(this.props['outlet-menu-day']),
-      activeDayIndex = JSON.parse(this.props['active-day-index'])
+          outletMenuDay = JSON.parse(this.props['outlet-menu-day']),
+          activeDayIndex = JSON.parse(this.props['active-day-index'])
+
     return `
           <div class="diet__modes-content-shedule">
             <div class="diet__modes-content-shedule-days">

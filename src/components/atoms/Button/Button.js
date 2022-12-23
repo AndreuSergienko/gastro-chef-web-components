@@ -31,6 +31,10 @@ export class Button extends Component {
 		this.addEventListener('click', this.onClick)
 	}
 
+	componentWillUnmount() {
+		this.removeEventListener('click', this.onClick)
+	}
+
 	render() {
 		const setAddClass = this.props['is-active'] ? JSON.parse(this.props['is-active']) : false
 

@@ -56,6 +56,12 @@ export class AssistanceOrder extends Component {
         this.addEventListener("submit", this.form.handleSubmit(this.registerUser));
     }
 
+    componentWillUnmount() {
+        this.removeEventListener("click", this.validateForm);
+        eventBus.off(APP_EVENTS.validateControls, this.validate);
+        this.removeEventListener("submit", this.form.handleSubmit(this.registerUser));
+    }
+
     render() {
 
         return `

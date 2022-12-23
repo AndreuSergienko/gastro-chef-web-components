@@ -1,8 +1,8 @@
 import { Component } from "../../../../core";
 import './Diet.scss';
-import '../../../atoms/Button';
-import '../../../atoms/DietModeButton';
-import '../../../molecules/DietModeContent';
+import '../../../atoms';
+import '../../../atoms';
+import '../../../molecules';
 import { APP_EVENTS } from "../../../../constants";
 import { modesData } from './modesData'
 
@@ -14,7 +14,6 @@ export class Diet extends Component {
       activeModeIndex: 0,
       outletMode: {
         ...modesData[0],
-        isActive: false,
       }
     }
   }
@@ -25,13 +24,16 @@ export class Diet extends Component {
       activeModeIndex: detail.clickedModeIndex,
       outletMode: {
         ...modesData[detail.clickedModeIndex],
-        isActive: true,
       },
     }))
   }
 
   componentDidMount() {
     this.addEventListener(APP_EVENTS.switchMode, this.onSwitch)
+  }
+
+  componentWillUnmount() {
+    this.removeEventListener(APP_EVENTS.switchMode, this.onSwitch)
   }
 
   render() {
@@ -56,10 +58,11 @@ export class Diet extends Component {
 
         <div class="diet__modes">
           <div class="diet__modes-btns">
-          ${this.state.modesData.map((mode, index) => (`
+          ${this.state.modesData.map(({ title, calories }, index) => (`
             <gastro-diet-mode-button
               parent-class='diet__modes-mode'
-              mode='${JSON.stringify(mode)}'
+              title="${title}"
+              calories="${calories}"
               index='${index}'
               isactive='${index === this.state.activeModeIndex}'
             >

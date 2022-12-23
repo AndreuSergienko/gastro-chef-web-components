@@ -21,6 +21,10 @@ export class AssistanceFaqQuestion extends Component {
         this.addEventListener('click', this.onClick)
     }
 
+    componentWillUnmount() {
+        this.removeEventListener('click', this.onClick)
+    }
+
     render() {
         return `
         <div class="assistance__faq-question ${JSON.parse(this.props['is-open']) ? 'open' : ''}">

@@ -89,6 +89,11 @@ export class AdminPage extends Component {
       this.addEventListener("submit", this.form.handleSubmit(this.createArticle));
    }
 
+   componentWillUnmount() {
+      this.removeEventListener(APP_EVENTS.removeArticle, this.onRemove)
+      this.removeEventListener("submit", this.form.handleSubmit(this.createArticle));
+   }
+
    render() {
       return `
          <gastro-preloader is-loading="${this.state.isLoading}">
