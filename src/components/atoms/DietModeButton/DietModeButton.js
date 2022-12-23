@@ -9,12 +9,11 @@ export class DietModeButton extends Component {
   }
 
   static get observedAttributes() {
-    return ['mode', 'isactive', 'index', 'parent-class']
+    return ['title', 'calories', 'isactive', 'index', 'parent-class']
   }
 
   onClick() {
     this.dispatch(APP_EVENTS.switchMode, {
-      mode: this.props.mode,
       clickedModeIndex: +this.props.index,
     })
   }
@@ -24,14 +23,19 @@ export class DietModeButton extends Component {
     this.addEventListener('click', this.onClick)
   }
 
+  componentWillUnmount() {
+    this.removeEventListener('click', this.onClick)
+  }
+
   render() {
-    this.props.mode = JSON.parse(this.props.mode);
     this.props.isactive = JSON.parse(this.props.isactive);
-    const { mode, isactive } = this.props;
+
+    const { title, calories, isactive } = this.props;
+
     return `
       <button class="diet__modes-btn ${isactive ? 'active' : ''}">
-        <span class="diet__modes-btn-title">${mode.title}</span>
-        <span class="diet__modes-btn-cal">${mode.calories} ккал</span>
+        <span class="diet__modes-btn-title">${title}</span>
+        <span class="diet__modes-btn-cal">${calories} ккал</span>
       </button>
     `
   }

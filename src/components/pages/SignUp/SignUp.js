@@ -90,6 +90,8 @@ export class SignUpPage extends Component {
 
     componentWillUnmount() {
         eventBus.off(APP_EVENTS.validateControls, this.validate);
+        this.removeEventListener("click", this.validateForm);
+        this.removeEventListener("submit", this.form.handleSubmit(this.signUp));
     }
 
     render() {

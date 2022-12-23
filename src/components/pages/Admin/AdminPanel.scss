@@ -1,5 +1,6 @@
 .admin-panel {
 	padding-top: 260px;
+	padding-bottom: 70px;
 	min-height: 730px;
 	@media (max-width: 1200px) {
 		padding-top: 240px;
@@ -21,5 +22,39 @@
 	&-container {
 		max-width: 900px;
 		margin: 0 auto;
+	}
+
+	&__blog-control {
+		font-weight: 500;
+		color: #020202;
+		&-title {
+			font-size: 22px;
+			font-weight: 500;
+		}
+		
+	}
+
+	&__date {
+		font-weight: 500;
+		color: #020202;
+	}
+
+	&__delete-btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px 0;
+		color: #fce3ff;
+		border-radius: 15px;
+		background: rgb(237, 77, 77);
+		font-weight: 500;
+		width: 150px;
+		border: 1px solid rgb(237, 77, 77);
+		transition: 0.3s;
+
+		&:hover {
+			background: transparent;
+			color: #020202;
+		}
 	}
 }

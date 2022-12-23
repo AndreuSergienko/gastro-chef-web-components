@@ -17,6 +17,10 @@ class ArticleService {
     getArticle(id) {
         return this._database.readDoc(APP_COLLECTIONS.articles, id)
     }
+
+    removeArticle(id) {
+        return this._database.delete(APP_COLLECTIONS.articles, id)
+    }
 }
 
 export const articleService = new ArticleService();

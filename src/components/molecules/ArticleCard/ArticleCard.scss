@@ -35,6 +35,9 @@
 			max-width: 260px;
 			font-family: 'Comfortaa';
 			font-style: normal;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
 			font-weight: 700;
 			font-size: 16px;
 			line-height: 18px;

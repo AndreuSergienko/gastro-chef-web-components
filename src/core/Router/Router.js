@@ -65,7 +65,7 @@ export class Router extends HTMLElement {
     }
 
     disconnectedCallback() {
-        this.removeEventListener('popstate', this.onPopState);
+        this.removeEventListener('popstate', this.onPopState)
     }
 
 }

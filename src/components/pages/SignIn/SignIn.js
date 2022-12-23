@@ -31,7 +31,7 @@ export class SignInPage extends Component {
                     APP_EVENTS.changeRoute,
                     { target: APP_ROUTES.homePage }
                 );
-                eventBus.emit(APP_EVENTS.userLoggedIn, { user });
+                eventBus.emit(APP_EVENTS.userLoggedIn, { user: user });
             })
             .catch((error) => {
                 this.setState((state) => {
@@ -88,6 +88,7 @@ export class SignInPage extends Component {
 
     componentWillUnmount() {
         eventBus.off(APP_EVENTS.validateControls, this.validate);
+        this.removeEventListener("click", this.validateForm);
         this.removeEventListener("submit", this.form.handleSubmit(this.signIn));
     }
 

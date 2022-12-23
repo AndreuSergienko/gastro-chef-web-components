@@ -12,6 +12,7 @@ export class AdminPage extends Component {
       super();
       this.state = {
          isLoading: false,
+         blogData: null,
       }
       this.form = new FormManager();
    }
@@ -27,6 +28,7 @@ export class AdminPage extends Component {
                      ...data,
                      poster: url,
                   })
+                  .then(() => this.getData())
                   .catch((error) => {
                      console.log(error);
                   })
@@ -56,10 +58,40 @@ export class AdminPage extends Component {
       }
    }
 
+   getData() {
+      togglePreloader(this)
+      articleService.getArticles()
+         .then((data) => {
+            this.setState((state) => {
+               return {
+                  ...state,
+                  blogData: data
+               }
+            })
+         })
+         .finally(() => togglePreloader(this))
+   }
+
+   onRemove({ detail }) {
+      togglePreloader(this)
+      articleService.removeArticle(detail.id)
+         .then(() => {
+            this.getData()
+         })
+         .finally(() => togglePreloader(this))
+   }
+
    componentDidMount() {
       this.checkUser()
+      this.getData();
       this.scrollToTop()
+      this.addEventListener(APP_EVENTS.removeArticle, this.onRemove)
       this.addEventListener("submit", this.form.handleSubmit(this.createArticle));
+   }
+
+   componentWillUnmount() {
+      this.removeEventListener(APP_EVENTS.removeArticle, this.onRemove)
+      this.removeEventListener("submit", this.form.handleSubmit(this.createArticle));
    }
 
    render() {
@@ -69,17 +101,14 @@ export class AdminPage extends Component {
                <div class="container">
                   <div class="admin-panel-container">
                      <form id="send-data">
-
                         <div class="mb-3">
                            <label class="form-label">Название блога</label>
                            <input class="form-control" type="text" name="title">
                         </div>
-
                         <div class="mb-3">
                            <label class="form-label">Загрузить обложку</label>
                            <input class="form-control" type="file" id="formFile" name="poster">
                         </div>
-
                         <div class="mb-3">
                            <label class="form-label">Дата</label>
                            <input
@@ -89,7 +118,6 @@ export class AdminPage extends Component {
                               value=${this.generateDate()}
                            >
                         </div>
-
                         <div class="mb-3">
                            <label
                               for="exampleFormControlTextarea1" 
@@ -107,6 +135,49 @@ export class AdminPage extends Component {
                            Send
                         </button>
                      </form>
+                     ${this.state.blogData?.length ? `
+                     <div class="admin-panel__blog-control-w mt-5">
+                     <h3 class="admin-panel__blog-control-title">
+                        Управление блогом
+                     </h3>
+                     <table class="table admin-panel__blog-control mt-3">
+                        <thead>
+                           <tr>
+                              <th class="blog-control__id" scope="col">
+                                 ID
+                              </th>
+                              <th class="blog-control__title" scope="col">
+                                 Название блога
+                              </th>
+                              <th class="blog-control__date" scope="col">
+                                 Дата создания
+                              </th>
+                              <th class="blog-control__action" scope="col">
+                                 Действие
+                              </th>
+                           </tr>
+                        </thead>
+                        <tbody>
+                        ${this.state.blogData?.map(({ title, date, id }, index) => (`
+                           <tr>
+                              <th scope="row">${index + 1}</th>
+                              <td>${title}</td>
+                              <td class="admin-panel__date">${date}</td>
+                              <td>
+                              <gastro-button
+                                 evt-type="${APP_EVENTS.removeArticle}"
+                                 classname="admin-panel__delete-btn"
+                                 content="Delete"
+                                 id="${id}"
+                              >
+                              </gastro-button>
+                              </td>
+
+                           </tr>`)).join('')}
+                        </tbody>
+                     </table>
+                     </div>
+                     `: '<h2 class="mt-5 fs-4 fw-semibold">Данных нет</h2>'}
                   </div>   
                </div>
             </div>

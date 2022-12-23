@@ -34,6 +34,10 @@ export class Overlay extends Component {
         this.addEventListener('click', this.onClick)
     }
 
+    componentWillUnmount() {
+        this.removeEventListener('click', this.onClick)
+    }
+
     render() {
         return `
     <style>
