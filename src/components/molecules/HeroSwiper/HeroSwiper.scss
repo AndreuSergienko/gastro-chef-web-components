@@ -20,7 +20,7 @@
 		position: relative;
 		height: 100%;
 		background-image: url('../../../assets/images/slides/circle.svg');
-		background-position: calc(100% + 300px) 0;
+		background-position: calc(100% + 370px) 0;
 		background-repeat: no-repeat;
 		@media (max-width: 1600px) {
 			background-position: calc(100% + 400px) 0;
@@ -227,8 +227,8 @@
 				position: absolute;
 				top: 210px;
 				right: 130px;
-				width: 550px;
-				height: 550px;
+				width: 500px;
+				height: 500px;
 				border-radius: 50%;
 				background: #f5faff;
 				box-shadow: 0px 0px 30px rgba(86, 86, 86, 0.3);
