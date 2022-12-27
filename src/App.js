@@ -1,7 +1,6 @@
 import { eventBus, Component } from './core';
-import { togglePreloader, checkPath } from './utils'
+import { togglePreloader, checkPath } from './utils';
 import './components';
-// import './auth'
 import { APP_EVENTS, APP_ROUTES } from './constants';
 import { authService } from './services';
 
